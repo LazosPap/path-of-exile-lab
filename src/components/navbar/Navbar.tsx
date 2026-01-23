@@ -1,6 +1,7 @@
 import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
 
 import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
+import { ModeToggle } from "@/components/mode-toggle";
 import {
   Accordion,
   AccordionContent,
@@ -157,6 +158,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle />
             <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>
