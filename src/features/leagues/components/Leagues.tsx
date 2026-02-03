@@ -1,0 +1,73 @@
+import { useQuery } from "@tanstack/react-query";
+import { format, parseISO } from "date-fns";
+import { Minus } from "lucide-react";
+
+import Leagues_banner from "@/assets/images/League_banner.webp";
+import { TiltedCard } from "@/components/cards";
+import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
+import { getLeaguesQueryOptions } from "@/queries/leagues";
+
+export function Leagues() {
+  /** @TODO IMPORT THE "isLoading" with skeleton and "isFetching" with a loadinSpinner.  */
+  const { data } = useQuery(getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }));
+
+  return (
+    <section>
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid gap-6 md:gap-8">
+          <div className="grid gap-1">
+            <h1 className="text-2xl font-bold tracking-tight">Leagues</h1>
+            <p className="text-muted-foreground my-4">
+              Check all the current leaagues that are available.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="mx-auto grid grid-cols-1 place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3
+          xl:grid-cols-4"
+      >
+        {data?.map((league, index) => (
+          <TiltedCard
+            key={index}
+            imageSrc={Leagues_banner}
+            altText={league?.name}
+            captionText={league?.name}
+            containerHeight="300px"
+            containerWidth="300px"
+            imageHeight="300px"
+            imageWidth="300px"
+            rotateAmplitude={12}
+            scaleOnHover={1.05}
+            showMobileWarning={false}
+            showTooltip
+            displayOverlayContent
+            displayOverlayContentBottom
+            overlayContent={
+              <p
+                className="text-secondary m-8 rounded-[15px] bg-black/40 px-4 py-2 font-black
+                  tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
+              >
+                {league?.name}
+              </p>
+            }
+            overlayContentBottom={
+              <p
+                className="text-primary m-8 flex flex-row rounded-[15px] bg-black/40 px-4 py-2
+                  font-black tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
+              >
+                {/* Check if we get from the API a valid end date to display it. */}
+                {league?.start_date && format(parseISO(league.start_date), "dd MMM yyyy")}
+                <Minus />
+                {league?.end_date && !league.end_date.startsWith("0001-01-01")
+                  ? format(parseISO(league.end_date), "dd MMM yyyy")
+                  : "Ongoing"}
+              </p>
+            }
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
