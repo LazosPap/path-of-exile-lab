@@ -10,6 +10,7 @@ import { getLeaguesQueryOptions } from "@/queries/leagues";
 export function Leagues() {
   /** @TODO IMPORT THE "isLoading" with skeleton and "isFetching" with a loadinSpinner.  */
   const { data } = useQuery(getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }));
+  console.log("🚀 ~ Leagues ~ data:", data)
 
   return (
     <section>
