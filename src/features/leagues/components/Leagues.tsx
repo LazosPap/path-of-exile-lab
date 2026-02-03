@@ -4,13 +4,30 @@ import { Minus } from "lucide-react";
 
 import Leagues_banner from "@/assets/images/League_banner.webp";
 import { TiltedCard } from "@/components/cards";
+import { TiltedCardSkeleton } from "@/components/skeletons/cards";
 import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
 import { getLeaguesQueryOptions } from "@/queries/leagues";
 
 export function Leagues() {
-  /** @TODO IMPORT THE "isLoading" with skeleton and "isFetching" with a loadinSpinner.  */
-  const { data } = useQuery(getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }));
+  const { data, isLoading } = useQuery(
+    getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }),
+  );
 
+  /** Set the number of the loop as 9 because that's how many we are getting from the API. */
+  const skeletonCount = 9;
+
+  /** Create a skeleton for the first fetch from the API. */
+  if (isLoading)
+    return (
+      <div
+        className="mx-auto grid grid-cols-1 place-items-center gap-6 md:grid-cols-2 lg:grid-cols-3
+          xl:grid-cols-4"
+      >
+        {Array.from({ length: skeletonCount }).map((_, index) => (
+          <TiltedCardSkeleton key={index} />
+        ))}
+      </div>
+    );
   return (
     <section>
       <div className="container mx-auto px-4 md:px-6">
@@ -44,6 +61,7 @@ export function Leagues() {
             showTooltip
             displayOverlayContent
             displayOverlayContentBottom
+            /**This is the top label. */
             overlayContent={
               <p
                 className="text-secondary m-8 rounded-[15px] bg-black/40 px-4 py-2 font-black
@@ -52,6 +70,7 @@ export function Leagues() {
                 {league?.name}
               </p>
             }
+            /**This is the bottom label. */
             overlayContentBottom={
               <p
                 className="text-primary m-8 flex flex-row rounded-[15px] bg-black/40 px-4 py-2
