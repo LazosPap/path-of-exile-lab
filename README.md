@@ -1,73 +1,120 @@
-# React + TypeScript + Vite
+# File Tree: path-of-exile-lab
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Generated:** 2/4/2026, 4:57:57 PM
+**Root Path:** `c:\Users\Lazaros\Documents\path-of-exile-lab`
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+├── 📁 .tanstack
+├── 📁 public
+│   └── 🖼️ vite.svg
+├── 📁 src
+│   ├── 📁 assets
+│   │   ├── 📁 images
+│   │   │   ├── 🖼️ League_banner.webp
+│   │   │   ├── 🖼️ Poe_lab_logo.svg
+│   │   │   └── 🖼️ poe.svg
+│   │   └── 🖼️ react.svg
+│   ├── 📁 components
+│   │   ├── 📁 cards
+│   │   │   ├── 📄 TiltedCard.tsx
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 errors
+│   │   │   ├── 📄 NotFound.tsx
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 layouts
+│   │   │   ├── 📄 PageLayout.tsx
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 mode-toggle
+│   │   │   ├── 📄 ModeToggle.tsx
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 navbar
+│   │   │   ├── 📄 Navbar.tsx
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 shadcn
+│   │   │   ├── 📄 accordion.tsx
+│   │   │   ├── 📄 button.tsx
+│   │   │   ├── 📄 dropdown-menu.tsx
+│   │   │   ├── 📄 navigation-menu.tsx
+│   │   │   ├── 📄 sheet.tsx
+│   │   │   └── 📄 sonner.tsx
+│   │   └── 📁 skeletons
+│   │       └── 📁 cards
+│   │           ├── 📄 TiltedCardSkeleton.tsx
+│   │           └── 📄 index.ts
+│   ├── 📁 constants
+│   │   ├── 📁 endpoints
+│   │   │   ├── 📄 endpoints.ts
+│   │   │   └── 📄 index.ts
+│   │   └── 📁 navbar
+│   │       ├── 📄 index.ts
+│   │       └── 📄 navbar.ts
+│   ├── 📁 context
+│   │   └── 📁 theme
+│   │       ├── 📄 ThemeProvider.tsx
+│   │       └── 📄 index.ts
+│   ├── 📁 features
+│   │   └── 📁 leagues
+│   │       └── 📁 components
+│   │           ├── 📄 Leagues.tsx
+│   │           └── 📄 index.ts
+│   ├── 📁 hooks
+│   │   └── 📁 theme
+│   │       └── 📄 useTheme.ts
+│   ├── 📁 lib
+│   │   ├── 📁 queryClient
+│   │   │   ├── 📄 index.ts
+│   │   │   └── 📄 queryClient.ts
+│   │   └── 📄 utils.ts
+│   ├── 📁 queries
+│   │   └── 📁 leagues
+│   │       ├── 📄 getLeaguesQuery.ts
+│   │       └── 📄 index.ts
+│   ├── 📁 routes
+│   │   ├── 📄 __root.tsx
+│   │   ├── 📄 index.tsx
+│   │   └── 📄 leagues.tsx
+│   ├── 📁 server
+│   ├── 📁 services
+│   │   ├── 📁 axiosInstance
+│   │   │   ├── 📄 axiosInstance.ts
+│   │   │   └── 📄 index.ts
+│   │   └── 📁 poeService
+│   │       └── 📁 leagues
+│   │           ├── 📄 index.ts
+│   │           └── 📄 leagues.ts
+│   ├── 📁 types
+│   │   ├── 📁 cards
+│   │   │   ├── 📄 cards.ts
+│   │   │   └── 📄 index.ts
+│   │   ├── 📁 endpointsServices
+│   │   │   ├── 📄 index.ts
+│   │   │   └── 📄 services.ts
+│   │   ├── 📁 layouts
+│   │   │   ├── 📄 index.ts
+│   │   │   └── 📄 layouts.ts
+│   │   ├── 📁 navbar
+│   │   │   ├── 📄 index.ts
+│   │   │   └── 📄 navbar.ts
+│   │   └── 📁 queryOptions
+│   │       ├── 📄 index.ts
+│   │       └── 📄 leaguesQueryOptions.ts
+│   ├── 📄 App.tsx
+│   ├── 🎨 index.css
+│   ├── 📄 main.tsx
+│   └── 📄 routeTree.gen.ts
+├── ⚙️ .gitignore
+├── ⚙️ .prettierrc
+├── 📝 README.md
+├── ⚙️ components.json
+├── 📄 eslint.config.js
+├── 🌐 index.html
+├── ⚙️ package-lock.json
+├── ⚙️ package.json
+├── ⚙️ tsconfig.app.json
+├── ⚙️ tsconfig.json
+├── ⚙️ tsconfig.node.json
+└── 📄 vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Generated by FileTree Pro Extension*
