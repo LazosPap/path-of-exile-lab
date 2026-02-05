@@ -169,7 +169,7 @@ const Navbar = ({
                         : "Ongoing"}
                     </span>
                   </div>
-                  {selectLeague === league.name && <CheckIcon className="ml-auto text-primary" />}
+                  {selectLeague === league.name && <CheckIcon className="text-primary ml-auto" />}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuAvatar>
