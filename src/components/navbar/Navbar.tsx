@@ -1,7 +1,13 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { format, parseISO } from "date-fns";
+import { Book, CheckIcon, Menu, Minus, Sunset, Trees, Zap } from "lucide-react";
+import { useState } from "react";
 
+import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
 import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
+import ButtonWrapper from "@/components/button/ButtonWrapper";
+import { DropdownMenuAvatar } from "@/components/dropdown";
 import { ModeToggle } from "@/components/mode-toggle";
 import {
   Accordion,
@@ -9,7 +15,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/shadcn/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/shadcn/avatar";
 import { Button } from "@/components/shadcn/button";
+import { DropdownMenuItem } from "@/components/shadcn/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,7 +33,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn/sheet";
+import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
 import { cn } from "@/lib/utils";
+import { getLeaguesQueryOptions } from "@/queries/leagues";
 
 import type { MenuItem, NavbarProps } from "@/types/navbar";
 
@@ -106,6 +116,12 @@ const Navbar = ({
 
   className,
 }: NavbarProps) => {
+  /** Control the state of the selection league the user clicks. */
+  const [selectLeague, setSelectLeague] = useState<string>();
+
+  /** Call the query for the leagues dropdown data. */
+  const { data } = useQuery(getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }));
+
   return (
     <section className={cn("py-4", className)}>
       <div className="container">
@@ -125,6 +141,38 @@ const Navbar = ({
           </div>
           <div className="flex gap-2">
             <ModeToggle />
+            <DropdownMenuAvatar
+              trigger={
+                <Button variant="outline">{selectLeague ? selectLeague : "Choose League"}</Button>
+              }
+              menuLabel="Current Leagues"
+              contentClassName="w-96"
+            >
+              {data?.map((league, index) => (
+                <DropdownMenuItem
+                  onClick={() => setSelectLeague(league?.name)}
+                  key={index}
+                  className="flex justify-between"
+                >
+                  <Avatar className="w-12">
+                    <AvatarImage src={Path_of_exile_logo} alt={league.name} />
+                    <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-1 flex-col">
+                    <span className="text-popover-foreground">{league.name}</span>
+                    <span className="text-muted-foreground inline-flex text-xs">
+                      {/* Check if we get from the API a valid end date to display it. */}
+                      {league?.start_date && format(parseISO(league.start_date), "dd MMM yyyy")}
+                      <Minus />
+                      {league?.end_date && !league.end_date.startsWith("0001-01-01")
+                        ? format(parseISO(league.end_date), "dd MMM yyyy")
+                        : "Ongoing"}
+                    </span>
+                  </div>
+                  {selectLeague === league.name && <CheckIcon className="ml-auto text-primary" />}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuAvatar>
           </div>
         </nav>
 
@@ -153,6 +201,37 @@ const Navbar = ({
                   <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
+                  <ModeToggle />
+                  <DropdownMenuAvatar
+                    trigger={
+                      <ButtonWrapper className="w-1/2" variant="outline">
+                        Choose League
+                      </ButtonWrapper>
+                    }
+                    menuLabel="Current Leagues"
+                    contentClassName="w-96"
+                  >
+                    {data?.map((league, index) => (
+                      <DropdownMenuItem key={index} className="flex justify-between">
+                        <Avatar className="w-12">
+                          <AvatarImage src={Path_of_exile_logo} alt={league.name} />
+                          <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex flex-1 flex-col">
+                          <span className="text-popover-foreground">{league.name}</span>
+                          <span className="text-muted-foreground inline-flex text-xs">
+                            {/* Check if we get from the API a valid end date to display it. */}
+                            {league?.start_date &&
+                              format(parseISO(league.start_date), "dd MMM yyyy")}
+                            <Minus />
+                            {league?.end_date && !league.end_date.startsWith("0001-01-01")
+                              ? format(parseISO(league.end_date), "dd MMM yyyy")
+                              : "Ongoing"}
+                          </span>
+                        </div>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuAvatar>
                 </div>
               </SheetContent>
             </Sheet>
