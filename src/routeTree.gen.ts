@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as LeaguesRouteImport } from './routes/leagues'
+import { Route as homeLayoutRouteImport } from './routes/(home)/layout'
+import { Route as economyLayoutRouteImport } from './routes/(economy)/layout'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as homeLeaguesRouteImport } from './routes/(home)/leagues'
+import { Route as economyEconomyRouteImport } from './routes/(economy)/economy'
 
-const LeaguesRoute = LeaguesRouteImport.update({
-  id: '/leagues',
-  path: '/leagues',
+const homeLayoutRoute = homeLayoutRouteImport.update({
+  id: '/(home)',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const economyLayoutRoute = economyLayoutRouteImport.update({
+  id: '/(economy)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +28,69 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const homeLeaguesRoute = homeLeaguesRouteImport.update({
+  id: '/leagues',
+  path: '/leagues',
+  getParentRoute: () => homeLayoutRoute,
+} as any)
+const economyEconomyRoute = economyEconomyRouteImport.update({
+  id: '/economy',
+  path: '/economy',
+  getParentRoute: () => economyLayoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/leagues': typeof LeaguesRoute
+  '/economy': typeof economyEconomyRoute
+  '/leagues': typeof homeLeaguesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/leagues': typeof LeaguesRoute
+  '/economy': typeof economyEconomyRoute
+  '/leagues': typeof homeLeaguesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/leagues': typeof LeaguesRoute
+  '/(economy)': typeof economyLayoutRouteWithChildren
+  '/(home)': typeof homeLayoutRouteWithChildren
+  '/(economy)/economy': typeof economyEconomyRoute
+  '/(home)/leagues': typeof homeLeaguesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/leagues'
+  fullPaths: '/' | '/economy' | '/leagues'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/leagues'
-  id: '__root__' | '/' | '/leagues'
+  to: '/' | '/economy' | '/leagues'
+  id:
+    | '__root__'
+    | '/'
+    | '/(economy)'
+    | '/(home)'
+    | '/(economy)/economy'
+    | '/(home)/leagues'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LeaguesRoute: typeof LeaguesRoute
+  economyLayoutRoute: typeof economyLayoutRouteWithChildren
+  homeLayoutRoute: typeof homeLayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/leagues': {
-      id: '/leagues'
-      path: '/leagues'
-      fullPath: '/leagues'
-      preLoaderRoute: typeof LeaguesRouteImport
+    '/(home)': {
+      id: '/(home)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof homeLayoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(economy)': {
+      id: '/(economy)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof economyLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +100,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(home)/leagues': {
+      id: '/(home)/leagues'
+      path: '/leagues'
+      fullPath: '/leagues'
+      preLoaderRoute: typeof homeLeaguesRouteImport
+      parentRoute: typeof homeLayoutRoute
+    }
+    '/(economy)/economy': {
+      id: '/(economy)/economy'
+      path: '/economy'
+      fullPath: '/economy'
+      preLoaderRoute: typeof economyEconomyRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
   }
 }
 
+interface economyLayoutRouteChildren {
+  economyEconomyRoute: typeof economyEconomyRoute
+}
+
+const economyLayoutRouteChildren: economyLayoutRouteChildren = {
+  economyEconomyRoute: economyEconomyRoute,
+}
+
+const economyLayoutRouteWithChildren = economyLayoutRoute._addFileChildren(
+  economyLayoutRouteChildren,
+)
+
+interface homeLayoutRouteChildren {
+  homeLeaguesRoute: typeof homeLeaguesRoute
+}
+
+const homeLayoutRouteChildren: homeLayoutRouteChildren = {
+  homeLeaguesRoute: homeLeaguesRoute,
+}
+
+const homeLayoutRouteWithChildren = homeLayoutRoute._addFileChildren(
+  homeLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LeaguesRoute: LeaguesRoute,
+  economyLayoutRoute: economyLayoutRouteWithChildren,
+  homeLayoutRoute: homeLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
