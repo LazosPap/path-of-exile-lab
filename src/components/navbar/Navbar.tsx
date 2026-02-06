@@ -109,6 +109,10 @@ const Navbar = ({
       ],
     },
     {
+      title: "Economy",
+      url: "/economy",
+    },
+    {
       title: "Leagues",
       url: "/leagues",
     },
