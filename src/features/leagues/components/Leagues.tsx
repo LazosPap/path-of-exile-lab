@@ -4,6 +4,7 @@ import { Minus } from "lucide-react";
 
 import Leagues_banner from "@/assets/images/League_banner.webp";
 import { TiltedCard } from "@/components/cards";
+import AnimatedDiv from "@/components/motion/AnimatedDiv";
 import { TiltedCardSkeleton } from "@/components/skeletons/cards";
 import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
 import { getLeaguesQueryOptions } from "@/queries/leagues";
@@ -46,45 +47,47 @@ export function Leagues() {
           xl:grid-cols-4"
       >
         {data?.map((league, index) => (
-          <TiltedCard
-            key={index}
-            imageSrc={Leagues_banner}
-            altText={league?.name}
-            captionText={league?.name}
-            containerHeight="300px"
-            containerWidth="300px"
-            imageHeight="300px"
-            imageWidth="300px"
-            rotateAmplitude={12}
-            scaleOnHover={1.05}
-            showMobileWarning={false}
-            showTooltip
-            displayOverlayContent
-            displayOverlayContentBottom
-            /**This is the top label. */
-            overlayContent={
-              <p
-                className="text-secondary m-8 rounded-[15px] bg-black/40 px-4 py-2 font-black
-                  tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
-              >
-                {league?.name}
-              </p>
-            }
-            /**This is the bottom label. */
-            overlayContentBottom={
-              <p
-                className="text-primary m-8 flex flex-row rounded-[15px] bg-black/40 px-4 py-2
-                  font-black tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
-              >
-                {/* Check if we get from the API a valid end date to display it. */}
-                {league?.start_date && format(parseISO(league.start_date), "dd MMM yyyy")}
-                <Minus />
-                {league?.end_date && !league.end_date.startsWith("0001-01-01")
-                  ? format(parseISO(league.end_date), "dd MMM yyyy")
-                  : "Ongoing"}
-              </p>
-            }
-          />
+          <AnimatedDiv index={index}>
+            <TiltedCard
+              key={index}
+              imageSrc={Leagues_banner}
+              altText={league?.name}
+              captionText={league?.name}
+              containerHeight="300px"
+              containerWidth="300px"
+              imageHeight="300px"
+              imageWidth="300px"
+              rotateAmplitude={12}
+              scaleOnHover={1.05}
+              showMobileWarning={false}
+              showTooltip
+              displayOverlayContent
+              displayOverlayContentBottom
+              /**This is the top label. */
+              overlayContent={
+                <p
+                  className="text-secondary m-8 rounded-[15px] bg-black/40 px-4 py-2 font-black
+                    tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
+                >
+                  {league?.name}
+                </p>
+              }
+              /**This is the bottom label. */
+              overlayContentBottom={
+                <p
+                  className="text-primary m-8 flex flex-row rounded-[15px] bg-black/40 px-4 py-2
+                    font-black tracking-[-0.5px] capitalize shadow-[0_5px_30px_#06001059]"
+                >
+                  {/* Check if we get from the API a valid end date to display it. */}
+                  {league?.start_date && format(parseISO(league.start_date), "dd MMM yyyy")}
+                  <Minus />
+                  {league?.end_date && !league.end_date.startsWith("0001-01-01")
+                    ? format(parseISO(league.end_date), "dd MMM yyyy")
+                    : "Ongoing"}
+                </p>
+              }
+            />
+          </AnimatedDiv>
         ))}
       </div>
     </section>

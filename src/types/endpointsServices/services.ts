@@ -8,3 +8,7 @@ export type League = {
   start_date: string;
   end_date: string;
 };
+
+export type LeagueArray = {
+  league: League[];
+};
