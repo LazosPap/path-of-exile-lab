@@ -1,8 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { format, parseISO } from "date-fns";
 import { Book, CheckIcon, Menu, Minus, Sunset, Trees, Zap } from "lucide-react";
-import { useState } from "react";
 
 import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
 import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
@@ -33,9 +31,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn/sheet";
-import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
+import { useLeagues } from "@/hooks/leagues";
 import { cn } from "@/lib/utils";
-import { getLeaguesQueryOptions } from "@/queries/leagues";
 
 import type { MenuItem, NavbarProps } from "@/types/navbar";
 
@@ -120,11 +117,8 @@ const Navbar = ({
 
   className,
 }: NavbarProps) => {
-  /** Control the state of the selection league the user clicks. */
-  const [selectLeague, setSelectLeague] = useState<string>();
-
-  /** Call the query for the leagues dropdown data. */
-  const { data } = useQuery(getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }));
+  /** Call the global hook for the leagues selection. */
+  const { leaguesData, selectedLeague, setSelectedLeague } = useLeagues();
 
   return (
     <section className={cn("py-4", className)}>
@@ -147,14 +141,16 @@ const Navbar = ({
             <ModeToggle />
             <DropdownMenuAvatar
               trigger={
-                <Button variant="outline">{selectLeague ? selectLeague : "Choose League"}</Button>
+                <ButtonWrapper variant="outline">
+                  {selectedLeague ? selectedLeague.name : "Choose League"}
+                </ButtonWrapper>
               }
               menuLabel="Current Leagues"
               contentClassName="w-96"
             >
-              {data?.map((league, index) => (
+              {leaguesData?.map((league, index) => (
                 <DropdownMenuItem
-                  onClick={() => setSelectLeague(league?.name)}
+                  onClick={() => setSelectedLeague(league)}
                   key={index}
                   className="flex justify-between"
                 >
@@ -173,7 +169,7 @@ const Navbar = ({
                         : "Ongoing"}
                     </span>
                   </div>
-                  {selectLeague === league.name && <CheckIcon className="text-primary ml-auto" />}
+                  {selectedLeague === league && <CheckIcon className="text-primary ml-auto" />}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuAvatar>
@@ -215,7 +211,7 @@ const Navbar = ({
                     menuLabel="Current Leagues"
                     contentClassName="w-96"
                   >
-                    {data?.map((league, index) => (
+                    {leaguesData?.map((league, index) => (
                       <DropdownMenuItem key={index} className="flex justify-between">
                         <Avatar className="w-12">
                           <AvatarImage src={Path_of_exile_logo} alt={league.name} />
