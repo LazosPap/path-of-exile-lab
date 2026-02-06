@@ -13,7 +13,7 @@ import { Route as homeLayoutRouteImport } from './routes/(home)/layout'
 import { Route as economyLayoutRouteImport } from './routes/(economy)/layout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as homeLeaguesRouteImport } from './routes/(home)/leagues'
-import { Route as economyEconomyRouteImport } from './routes/(economy)/economy'
+import { Route as economyCurrencyRouteImport } from './routes/(economy)/currency'
 
 const homeLayoutRoute = homeLayoutRouteImport.update({
   id: '/(home)',
@@ -33,20 +33,20 @@ const homeLeaguesRoute = homeLeaguesRouteImport.update({
   path: '/leagues',
   getParentRoute: () => homeLayoutRoute,
 } as any)
-const economyEconomyRoute = economyEconomyRouteImport.update({
-  id: '/economy',
-  path: '/economy',
+const economyCurrencyRoute = economyCurrencyRouteImport.update({
+  id: '/currency',
+  path: '/currency',
   getParentRoute: () => economyLayoutRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/economy': typeof economyEconomyRoute
+  '/currency': typeof economyCurrencyRoute
   '/leagues': typeof homeLeaguesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/economy': typeof economyEconomyRoute
+  '/currency': typeof economyCurrencyRoute
   '/leagues': typeof homeLeaguesRoute
 }
 export interface FileRoutesById {
@@ -54,20 +54,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/(economy)': typeof economyLayoutRouteWithChildren
   '/(home)': typeof homeLayoutRouteWithChildren
-  '/(economy)/economy': typeof economyEconomyRoute
+  '/(economy)/currency': typeof economyCurrencyRoute
   '/(home)/leagues': typeof homeLeaguesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/economy' | '/leagues'
+  fullPaths: '/' | '/currency' | '/leagues'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/economy' | '/leagues'
+  to: '/' | '/currency' | '/leagues'
   id:
     | '__root__'
     | '/'
     | '/(economy)'
     | '/(home)'
-    | '/(economy)/economy'
+    | '/(economy)/currency'
     | '/(home)/leagues'
   fileRoutesById: FileRoutesById
 }
@@ -107,22 +107,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof homeLeaguesRouteImport
       parentRoute: typeof homeLayoutRoute
     }
-    '/(economy)/economy': {
-      id: '/(economy)/economy'
-      path: '/economy'
-      fullPath: '/economy'
-      preLoaderRoute: typeof economyEconomyRouteImport
+    '/(economy)/currency': {
+      id: '/(economy)/currency'
+      path: '/currency'
+      fullPath: '/currency'
+      preLoaderRoute: typeof economyCurrencyRouteImport
       parentRoute: typeof economyLayoutRoute
     }
   }
 }
 
 interface economyLayoutRouteChildren {
-  economyEconomyRoute: typeof economyEconomyRoute
+  economyCurrencyRoute: typeof economyCurrencyRoute
 }
 
 const economyLayoutRouteChildren: economyLayoutRouteChildren = {
-  economyEconomyRoute: economyEconomyRoute,
+  economyCurrencyRoute: economyCurrencyRoute,
 }
 
 const economyLayoutRouteWithChildren = economyLayoutRoute._addFileChildren(
