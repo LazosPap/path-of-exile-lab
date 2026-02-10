@@ -13,28 +13,28 @@ import { Route as homeLayoutRouteImport } from './routes/(home)/layout'
 import { Route as economyLayoutRouteImport } from './routes/(economy)/layout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as homeLeaguesRouteImport } from './routes/(home)/leagues'
-import { Route as economyWeaponRouteImport } from './routes/(economy)/weapon'
-import { Route as economyUniqueMapRouteImport } from './routes/(economy)/uniqueMap'
-import { Route as economyScarabRouteImport } from './routes/(economy)/scarab'
-import { Route as economyResonatorRouteImport } from './routes/(economy)/resonator'
-import { Route as economyOilRouteImport } from './routes/(economy)/oil'
-import { Route as economyMapRouteImport } from './routes/(economy)/map'
-import { Route as economyJewelRouteImport } from './routes/(economy)/jewel'
-import { Route as economyInvitationRouteImport } from './routes/(economy)/invitation'
-import { Route as economyIncubatorRouteImport } from './routes/(economy)/incubator'
-import { Route as economyHeistRouteImport } from './routes/(economy)/heist'
-import { Route as economyGemRouteImport } from './routes/(economy)/gem'
-import { Route as economyFragmentRouteImport } from './routes/(economy)/fragment'
-import { Route as economyFossilRouteImport } from './routes/(economy)/fossil'
-import { Route as economyFlaskRouteImport } from './routes/(economy)/flask'
-import { Route as economyEssenceRouteImport } from './routes/(economy)/essence'
-import { Route as economyDeliriumOrbRouteImport } from './routes/(economy)/deliriumOrb'
-import { Route as economyCurrencyRouteImport } from './routes/(economy)/currency'
-import { Route as economyCardRouteImport } from './routes/(economy)/card'
-import { Route as economyBeastRouteImport } from './routes/(economy)/beast'
-import { Route as economyBasesRouteImport } from './routes/(economy)/bases'
-import { Route as economyArmourRouteImport } from './routes/(economy)/armour'
-import { Route as economyAccessoryRouteImport } from './routes/(economy)/accessory'
+import { Route as economygeneralResonatorRouteImport } from './routes/(economy)/(general)/resonator'
+import { Route as economygeneralOilRouteImport } from './routes/(economy)/(general)/oil'
+import { Route as economygeneralIncubatorRouteImport } from './routes/(economy)/(general)/incubator'
+import { Route as economygeneralHeistRouteImport } from './routes/(economy)/(general)/heist'
+import { Route as economygeneralFragmentRouteImport } from './routes/(economy)/(general)/fragment'
+import { Route as economygeneralFossilRouteImport } from './routes/(economy)/(general)/fossil'
+import { Route as economygeneralEssenceRouteImport } from './routes/(economy)/(general)/essence'
+import { Route as economygeneralCurrencyRouteImport } from './routes/(economy)/(general)/currency'
+import { Route as economygeneralCardRouteImport } from './routes/(economy)/(general)/card'
+import { Route as economygeneralBeastRouteImport } from './routes/(economy)/(general)/beast'
+import { Route as economyequipment_gemsWeaponRouteImport } from './routes/(economy)/(equipment_gems)/weapon'
+import { Route as economyequipment_gemsJewelRouteImport } from './routes/(economy)/(equipment_gems)/jewel'
+import { Route as economyequipment_gemsGemRouteImport } from './routes/(economy)/(equipment_gems)/gem'
+import { Route as economyequipment_gemsFlaskRouteImport } from './routes/(economy)/(equipment_gems)/flask'
+import { Route as economyequipment_gemsBasesRouteImport } from './routes/(economy)/(equipment_gems)/bases'
+import { Route as economyequipment_gemsArmourRouteImport } from './routes/(economy)/(equipment_gems)/armour'
+import { Route as economyequipment_gemsAccessoryRouteImport } from './routes/(economy)/(equipment_gems)/accessory'
+import { Route as economyatlasUniqueMapRouteImport } from './routes/(economy)/(atlas)/uniqueMap'
+import { Route as economyatlasScarabRouteImport } from './routes/(economy)/(atlas)/scarab'
+import { Route as economyatlasMapRouteImport } from './routes/(economy)/(atlas)/map'
+import { Route as economyatlasInvitationRouteImport } from './routes/(economy)/(atlas)/invitation'
+import { Route as economyatlasDeliriumOrbRouteImport } from './routes/(economy)/(atlas)/deliriumOrb'
 
 const homeLayoutRoute = homeLayoutRouteImport.update({
   id: '/(home)',
@@ -54,279 +54,286 @@ const homeLeaguesRoute = homeLeaguesRouteImport.update({
   path: '/leagues',
   getParentRoute: () => homeLayoutRoute,
 } as any)
-const economyWeaponRoute = economyWeaponRouteImport.update({
-  id: '/weapon',
-  path: '/weapon',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyUniqueMapRoute = economyUniqueMapRouteImport.update({
-  id: '/uniqueMap',
-  path: '/uniqueMap',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyScarabRoute = economyScarabRouteImport.update({
-  id: '/scarab',
-  path: '/scarab',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyResonatorRoute = economyResonatorRouteImport.update({
-  id: '/resonator',
+const economygeneralResonatorRoute = economygeneralResonatorRouteImport.update({
+  id: '/(general)/resonator',
   path: '/resonator',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyOilRoute = economyOilRouteImport.update({
-  id: '/oil',
+const economygeneralOilRoute = economygeneralOilRouteImport.update({
+  id: '/(general)/oil',
   path: '/oil',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyMapRoute = economyMapRouteImport.update({
-  id: '/map',
-  path: '/map',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyJewelRoute = economyJewelRouteImport.update({
-  id: '/jewel',
-  path: '/jewel',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyInvitationRoute = economyInvitationRouteImport.update({
-  id: '/invitation',
-  path: '/invitation',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyIncubatorRoute = economyIncubatorRouteImport.update({
-  id: '/incubator',
+const economygeneralIncubatorRoute = economygeneralIncubatorRouteImport.update({
+  id: '/(general)/incubator',
   path: '/incubator',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyHeistRoute = economyHeistRouteImport.update({
-  id: '/heist',
+const economygeneralHeistRoute = economygeneralHeistRouteImport.update({
+  id: '/(general)/heist',
   path: '/heist',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyGemRoute = economyGemRouteImport.update({
-  id: '/gem',
-  path: '/gem',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyFragmentRoute = economyFragmentRouteImport.update({
-  id: '/fragment',
+const economygeneralFragmentRoute = economygeneralFragmentRouteImport.update({
+  id: '/(general)/fragment',
   path: '/fragment',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyFossilRoute = economyFossilRouteImport.update({
-  id: '/fossil',
+const economygeneralFossilRoute = economygeneralFossilRouteImport.update({
+  id: '/(general)/fossil',
   path: '/fossil',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyFlaskRoute = economyFlaskRouteImport.update({
-  id: '/flask',
-  path: '/flask',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyEssenceRoute = economyEssenceRouteImport.update({
-  id: '/essence',
+const economygeneralEssenceRoute = economygeneralEssenceRouteImport.update({
+  id: '/(general)/essence',
   path: '/essence',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyDeliriumOrbRoute = economyDeliriumOrbRouteImport.update({
-  id: '/deliriumOrb',
-  path: '/deliriumOrb',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
-const economyCurrencyRoute = economyCurrencyRouteImport.update({
-  id: '/currency',
+const economygeneralCurrencyRoute = economygeneralCurrencyRouteImport.update({
+  id: '/(general)/currency',
   path: '/currency',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyCardRoute = economyCardRouteImport.update({
-  id: '/card',
+const economygeneralCardRoute = economygeneralCardRouteImport.update({
+  id: '/(general)/card',
   path: '/card',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyBeastRoute = economyBeastRouteImport.update({
-  id: '/beast',
+const economygeneralBeastRoute = economygeneralBeastRouteImport.update({
+  id: '/(general)/beast',
   path: '/beast',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyBasesRoute = economyBasesRouteImport.update({
-  id: '/bases',
-  path: '/bases',
+const economyequipment_gemsWeaponRoute =
+  economyequipment_gemsWeaponRouteImport.update({
+    id: '/(equipment_gems)/weapon',
+    path: '/weapon',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsJewelRoute =
+  economyequipment_gemsJewelRouteImport.update({
+    id: '/(equipment_gems)/jewel',
+    path: '/jewel',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsGemRoute =
+  economyequipment_gemsGemRouteImport.update({
+    id: '/(equipment_gems)/gem',
+    path: '/gem',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsFlaskRoute =
+  economyequipment_gemsFlaskRouteImport.update({
+    id: '/(equipment_gems)/flask',
+    path: '/flask',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsBasesRoute =
+  economyequipment_gemsBasesRouteImport.update({
+    id: '/(equipment_gems)/bases',
+    path: '/bases',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsArmourRoute =
+  economyequipment_gemsArmourRouteImport.update({
+    id: '/(equipment_gems)/armour',
+    path: '/armour',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyequipment_gemsAccessoryRoute =
+  economyequipment_gemsAccessoryRouteImport.update({
+    id: '/(equipment_gems)/accessory',
+    path: '/accessory',
+    getParentRoute: () => economyLayoutRoute,
+  } as any)
+const economyatlasUniqueMapRoute = economyatlasUniqueMapRouteImport.update({
+  id: '/(atlas)/uniqueMap',
+  path: '/uniqueMap',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyArmourRoute = economyArmourRouteImport.update({
-  id: '/armour',
-  path: '/armour',
+const economyatlasScarabRoute = economyatlasScarabRouteImport.update({
+  id: '/(atlas)/scarab',
+  path: '/scarab',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyAccessoryRoute = economyAccessoryRouteImport.update({
-  id: '/accessory',
-  path: '/accessory',
+const economyatlasMapRoute = economyatlasMapRouteImport.update({
+  id: '/(atlas)/map',
+  path: '/map',
+  getParentRoute: () => economyLayoutRoute,
+} as any)
+const economyatlasInvitationRoute = economyatlasInvitationRouteImport.update({
+  id: '/(atlas)/invitation',
+  path: '/invitation',
+  getParentRoute: () => economyLayoutRoute,
+} as any)
+const economyatlasDeliriumOrbRoute = economyatlasDeliriumOrbRouteImport.update({
+  id: '/(atlas)/deliriumOrb',
+  path: '/deliriumOrb',
   getParentRoute: () => economyLayoutRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/accessory': typeof economyAccessoryRoute
-  '/armour': typeof economyArmourRoute
-  '/bases': typeof economyBasesRoute
-  '/beast': typeof economyBeastRoute
-  '/card': typeof economyCardRoute
-  '/currency': typeof economyCurrencyRoute
-  '/deliriumOrb': typeof economyDeliriumOrbRoute
-  '/essence': typeof economyEssenceRoute
-  '/flask': typeof economyFlaskRoute
-  '/fossil': typeof economyFossilRoute
-  '/fragment': typeof economyFragmentRoute
-  '/gem': typeof economyGemRoute
-  '/heist': typeof economyHeistRoute
-  '/incubator': typeof economyIncubatorRoute
-  '/invitation': typeof economyInvitationRoute
-  '/jewel': typeof economyJewelRoute
-  '/map': typeof economyMapRoute
-  '/oil': typeof economyOilRoute
-  '/resonator': typeof economyResonatorRoute
-  '/scarab': typeof economyScarabRoute
-  '/uniqueMap': typeof economyUniqueMapRoute
-  '/weapon': typeof economyWeaponRoute
   '/leagues': typeof homeLeaguesRoute
+  '/deliriumOrb': typeof economyatlasDeliriumOrbRoute
+  '/invitation': typeof economyatlasInvitationRoute
+  '/map': typeof economyatlasMapRoute
+  '/scarab': typeof economyatlasScarabRoute
+  '/uniqueMap': typeof economyatlasUniqueMapRoute
+  '/accessory': typeof economyequipment_gemsAccessoryRoute
+  '/armour': typeof economyequipment_gemsArmourRoute
+  '/bases': typeof economyequipment_gemsBasesRoute
+  '/flask': typeof economyequipment_gemsFlaskRoute
+  '/gem': typeof economyequipment_gemsGemRoute
+  '/jewel': typeof economyequipment_gemsJewelRoute
+  '/weapon': typeof economyequipment_gemsWeaponRoute
+  '/beast': typeof economygeneralBeastRoute
+  '/card': typeof economygeneralCardRoute
+  '/currency': typeof economygeneralCurrencyRoute
+  '/essence': typeof economygeneralEssenceRoute
+  '/fossil': typeof economygeneralFossilRoute
+  '/fragment': typeof economygeneralFragmentRoute
+  '/heist': typeof economygeneralHeistRoute
+  '/incubator': typeof economygeneralIncubatorRoute
+  '/oil': typeof economygeneralOilRoute
+  '/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/accessory': typeof economyAccessoryRoute
-  '/armour': typeof economyArmourRoute
-  '/bases': typeof economyBasesRoute
-  '/beast': typeof economyBeastRoute
-  '/card': typeof economyCardRoute
-  '/currency': typeof economyCurrencyRoute
-  '/deliriumOrb': typeof economyDeliriumOrbRoute
-  '/essence': typeof economyEssenceRoute
-  '/flask': typeof economyFlaskRoute
-  '/fossil': typeof economyFossilRoute
-  '/fragment': typeof economyFragmentRoute
-  '/gem': typeof economyGemRoute
-  '/heist': typeof economyHeistRoute
-  '/incubator': typeof economyIncubatorRoute
-  '/invitation': typeof economyInvitationRoute
-  '/jewel': typeof economyJewelRoute
-  '/map': typeof economyMapRoute
-  '/oil': typeof economyOilRoute
-  '/resonator': typeof economyResonatorRoute
-  '/scarab': typeof economyScarabRoute
-  '/uniqueMap': typeof economyUniqueMapRoute
-  '/weapon': typeof economyWeaponRoute
   '/leagues': typeof homeLeaguesRoute
+  '/deliriumOrb': typeof economyatlasDeliriumOrbRoute
+  '/invitation': typeof economyatlasInvitationRoute
+  '/map': typeof economyatlasMapRoute
+  '/scarab': typeof economyatlasScarabRoute
+  '/uniqueMap': typeof economyatlasUniqueMapRoute
+  '/accessory': typeof economyequipment_gemsAccessoryRoute
+  '/armour': typeof economyequipment_gemsArmourRoute
+  '/bases': typeof economyequipment_gemsBasesRoute
+  '/flask': typeof economyequipment_gemsFlaskRoute
+  '/gem': typeof economyequipment_gemsGemRoute
+  '/jewel': typeof economyequipment_gemsJewelRoute
+  '/weapon': typeof economyequipment_gemsWeaponRoute
+  '/beast': typeof economygeneralBeastRoute
+  '/card': typeof economygeneralCardRoute
+  '/currency': typeof economygeneralCurrencyRoute
+  '/essence': typeof economygeneralEssenceRoute
+  '/fossil': typeof economygeneralFossilRoute
+  '/fragment': typeof economygeneralFragmentRoute
+  '/heist': typeof economygeneralHeistRoute
+  '/incubator': typeof economygeneralIncubatorRoute
+  '/oil': typeof economygeneralOilRoute
+  '/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(economy)': typeof economyLayoutRouteWithChildren
   '/(home)': typeof homeLayoutRouteWithChildren
-  '/(economy)/accessory': typeof economyAccessoryRoute
-  '/(economy)/armour': typeof economyArmourRoute
-  '/(economy)/bases': typeof economyBasesRoute
-  '/(economy)/beast': typeof economyBeastRoute
-  '/(economy)/card': typeof economyCardRoute
-  '/(economy)/currency': typeof economyCurrencyRoute
-  '/(economy)/deliriumOrb': typeof economyDeliriumOrbRoute
-  '/(economy)/essence': typeof economyEssenceRoute
-  '/(economy)/flask': typeof economyFlaskRoute
-  '/(economy)/fossil': typeof economyFossilRoute
-  '/(economy)/fragment': typeof economyFragmentRoute
-  '/(economy)/gem': typeof economyGemRoute
-  '/(economy)/heist': typeof economyHeistRoute
-  '/(economy)/incubator': typeof economyIncubatorRoute
-  '/(economy)/invitation': typeof economyInvitationRoute
-  '/(economy)/jewel': typeof economyJewelRoute
-  '/(economy)/map': typeof economyMapRoute
-  '/(economy)/oil': typeof economyOilRoute
-  '/(economy)/resonator': typeof economyResonatorRoute
-  '/(economy)/scarab': typeof economyScarabRoute
-  '/(economy)/uniqueMap': typeof economyUniqueMapRoute
-  '/(economy)/weapon': typeof economyWeaponRoute
   '/(home)/leagues': typeof homeLeaguesRoute
+  '/(economy)/(atlas)/deliriumOrb': typeof economyatlasDeliriumOrbRoute
+  '/(economy)/(atlas)/invitation': typeof economyatlasInvitationRoute
+  '/(economy)/(atlas)/map': typeof economyatlasMapRoute
+  '/(economy)/(atlas)/scarab': typeof economyatlasScarabRoute
+  '/(economy)/(atlas)/uniqueMap': typeof economyatlasUniqueMapRoute
+  '/(economy)/(equipment_gems)/accessory': typeof economyequipment_gemsAccessoryRoute
+  '/(economy)/(equipment_gems)/armour': typeof economyequipment_gemsArmourRoute
+  '/(economy)/(equipment_gems)/bases': typeof economyequipment_gemsBasesRoute
+  '/(economy)/(equipment_gems)/flask': typeof economyequipment_gemsFlaskRoute
+  '/(economy)/(equipment_gems)/gem': typeof economyequipment_gemsGemRoute
+  '/(economy)/(equipment_gems)/jewel': typeof economyequipment_gemsJewelRoute
+  '/(economy)/(equipment_gems)/weapon': typeof economyequipment_gemsWeaponRoute
+  '/(economy)/(general)/beast': typeof economygeneralBeastRoute
+  '/(economy)/(general)/card': typeof economygeneralCardRoute
+  '/(economy)/(general)/currency': typeof economygeneralCurrencyRoute
+  '/(economy)/(general)/essence': typeof economygeneralEssenceRoute
+  '/(economy)/(general)/fossil': typeof economygeneralFossilRoute
+  '/(economy)/(general)/fragment': typeof economygeneralFragmentRoute
+  '/(economy)/(general)/heist': typeof economygeneralHeistRoute
+  '/(economy)/(general)/incubator': typeof economygeneralIncubatorRoute
+  '/(economy)/(general)/oil': typeof economygeneralOilRoute
+  '/(economy)/(general)/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/leagues'
+    | '/deliriumOrb'
+    | '/invitation'
+    | '/map'
+    | '/scarab'
+    | '/uniqueMap'
     | '/accessory'
     | '/armour'
     | '/bases'
+    | '/flask'
+    | '/gem'
+    | '/jewel'
+    | '/weapon'
     | '/beast'
     | '/card'
     | '/currency'
-    | '/deliriumOrb'
     | '/essence'
-    | '/flask'
     | '/fossil'
     | '/fragment'
-    | '/gem'
     | '/heist'
     | '/incubator'
-    | '/invitation'
-    | '/jewel'
-    | '/map'
     | '/oil'
     | '/resonator'
-    | '/scarab'
-    | '/uniqueMap'
-    | '/weapon'
-    | '/leagues'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/leagues'
+    | '/deliriumOrb'
+    | '/invitation'
+    | '/map'
+    | '/scarab'
+    | '/uniqueMap'
     | '/accessory'
     | '/armour'
     | '/bases'
+    | '/flask'
+    | '/gem'
+    | '/jewel'
+    | '/weapon'
     | '/beast'
     | '/card'
     | '/currency'
-    | '/deliriumOrb'
     | '/essence'
-    | '/flask'
     | '/fossil'
     | '/fragment'
-    | '/gem'
     | '/heist'
     | '/incubator'
-    | '/invitation'
-    | '/jewel'
-    | '/map'
     | '/oil'
     | '/resonator'
-    | '/scarab'
-    | '/uniqueMap'
-    | '/weapon'
-    | '/leagues'
   id:
     | '__root__'
     | '/'
     | '/(economy)'
     | '/(home)'
-    | '/(economy)/accessory'
-    | '/(economy)/armour'
-    | '/(economy)/bases'
-    | '/(economy)/beast'
-    | '/(economy)/card'
-    | '/(economy)/currency'
-    | '/(economy)/deliriumOrb'
-    | '/(economy)/essence'
-    | '/(economy)/flask'
-    | '/(economy)/fossil'
-    | '/(economy)/fragment'
-    | '/(economy)/gem'
-    | '/(economy)/heist'
-    | '/(economy)/incubator'
-    | '/(economy)/invitation'
-    | '/(economy)/jewel'
-    | '/(economy)/map'
-    | '/(economy)/oil'
-    | '/(economy)/resonator'
-    | '/(economy)/scarab'
-    | '/(economy)/uniqueMap'
-    | '/(economy)/weapon'
     | '/(home)/leagues'
+    | '/(economy)/(atlas)/deliriumOrb'
+    | '/(economy)/(atlas)/invitation'
+    | '/(economy)/(atlas)/map'
+    | '/(economy)/(atlas)/scarab'
+    | '/(economy)/(atlas)/uniqueMap'
+    | '/(economy)/(equipment_gems)/accessory'
+    | '/(economy)/(equipment_gems)/armour'
+    | '/(economy)/(equipment_gems)/bases'
+    | '/(economy)/(equipment_gems)/flask'
+    | '/(economy)/(equipment_gems)/gem'
+    | '/(economy)/(equipment_gems)/jewel'
+    | '/(economy)/(equipment_gems)/weapon'
+    | '/(economy)/(general)/beast'
+    | '/(economy)/(general)/card'
+    | '/(economy)/(general)/currency'
+    | '/(economy)/(general)/essence'
+    | '/(economy)/(general)/fossil'
+    | '/(economy)/(general)/fragment'
+    | '/(economy)/(general)/heist'
+    | '/(economy)/(general)/incubator'
+    | '/(economy)/(general)/oil'
+    | '/(economy)/(general)/resonator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -365,211 +372,211 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof homeLeaguesRouteImport
       parentRoute: typeof homeLayoutRoute
     }
-    '/(economy)/weapon': {
-      id: '/(economy)/weapon'
-      path: '/weapon'
-      fullPath: '/weapon'
-      preLoaderRoute: typeof economyWeaponRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/uniqueMap': {
-      id: '/(economy)/uniqueMap'
-      path: '/uniqueMap'
-      fullPath: '/uniqueMap'
-      preLoaderRoute: typeof economyUniqueMapRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/scarab': {
-      id: '/(economy)/scarab'
-      path: '/scarab'
-      fullPath: '/scarab'
-      preLoaderRoute: typeof economyScarabRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/resonator': {
-      id: '/(economy)/resonator'
+    '/(economy)/(general)/resonator': {
+      id: '/(economy)/(general)/resonator'
       path: '/resonator'
       fullPath: '/resonator'
-      preLoaderRoute: typeof economyResonatorRouteImport
+      preLoaderRoute: typeof economygeneralResonatorRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/oil': {
-      id: '/(economy)/oil'
+    '/(economy)/(general)/oil': {
+      id: '/(economy)/(general)/oil'
       path: '/oil'
       fullPath: '/oil'
-      preLoaderRoute: typeof economyOilRouteImport
+      preLoaderRoute: typeof economygeneralOilRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/map': {
-      id: '/(economy)/map'
-      path: '/map'
-      fullPath: '/map'
-      preLoaderRoute: typeof economyMapRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/jewel': {
-      id: '/(economy)/jewel'
-      path: '/jewel'
-      fullPath: '/jewel'
-      preLoaderRoute: typeof economyJewelRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/invitation': {
-      id: '/(economy)/invitation'
-      path: '/invitation'
-      fullPath: '/invitation'
-      preLoaderRoute: typeof economyInvitationRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/incubator': {
-      id: '/(economy)/incubator'
+    '/(economy)/(general)/incubator': {
+      id: '/(economy)/(general)/incubator'
       path: '/incubator'
       fullPath: '/incubator'
-      preLoaderRoute: typeof economyIncubatorRouteImport
+      preLoaderRoute: typeof economygeneralIncubatorRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/heist': {
-      id: '/(economy)/heist'
+    '/(economy)/(general)/heist': {
+      id: '/(economy)/(general)/heist'
       path: '/heist'
       fullPath: '/heist'
-      preLoaderRoute: typeof economyHeistRouteImport
+      preLoaderRoute: typeof economygeneralHeistRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/gem': {
-      id: '/(economy)/gem'
-      path: '/gem'
-      fullPath: '/gem'
-      preLoaderRoute: typeof economyGemRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/fragment': {
-      id: '/(economy)/fragment'
+    '/(economy)/(general)/fragment': {
+      id: '/(economy)/(general)/fragment'
       path: '/fragment'
       fullPath: '/fragment'
-      preLoaderRoute: typeof economyFragmentRouteImport
+      preLoaderRoute: typeof economygeneralFragmentRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/fossil': {
-      id: '/(economy)/fossil'
+    '/(economy)/(general)/fossil': {
+      id: '/(economy)/(general)/fossil'
       path: '/fossil'
       fullPath: '/fossil'
-      preLoaderRoute: typeof economyFossilRouteImport
+      preLoaderRoute: typeof economygeneralFossilRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/flask': {
-      id: '/(economy)/flask'
-      path: '/flask'
-      fullPath: '/flask'
-      preLoaderRoute: typeof economyFlaskRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/essence': {
-      id: '/(economy)/essence'
+    '/(economy)/(general)/essence': {
+      id: '/(economy)/(general)/essence'
       path: '/essence'
       fullPath: '/essence'
-      preLoaderRoute: typeof economyEssenceRouteImport
+      preLoaderRoute: typeof economygeneralEssenceRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/deliriumOrb': {
-      id: '/(economy)/deliriumOrb'
-      path: '/deliriumOrb'
-      fullPath: '/deliriumOrb'
-      preLoaderRoute: typeof economyDeliriumOrbRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
-    '/(economy)/currency': {
-      id: '/(economy)/currency'
+    '/(economy)/(general)/currency': {
+      id: '/(economy)/(general)/currency'
       path: '/currency'
       fullPath: '/currency'
-      preLoaderRoute: typeof economyCurrencyRouteImport
+      preLoaderRoute: typeof economygeneralCurrencyRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/card': {
-      id: '/(economy)/card'
+    '/(economy)/(general)/card': {
+      id: '/(economy)/(general)/card'
       path: '/card'
       fullPath: '/card'
-      preLoaderRoute: typeof economyCardRouteImport
+      preLoaderRoute: typeof economygeneralCardRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/beast': {
-      id: '/(economy)/beast'
+    '/(economy)/(general)/beast': {
+      id: '/(economy)/(general)/beast'
       path: '/beast'
       fullPath: '/beast'
-      preLoaderRoute: typeof economyBeastRouteImport
+      preLoaderRoute: typeof economygeneralBeastRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/bases': {
-      id: '/(economy)/bases'
+    '/(economy)/(equipment_gems)/weapon': {
+      id: '/(economy)/(equipment_gems)/weapon'
+      path: '/weapon'
+      fullPath: '/weapon'
+      preLoaderRoute: typeof economyequipment_gemsWeaponRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(equipment_gems)/jewel': {
+      id: '/(economy)/(equipment_gems)/jewel'
+      path: '/jewel'
+      fullPath: '/jewel'
+      preLoaderRoute: typeof economyequipment_gemsJewelRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(equipment_gems)/gem': {
+      id: '/(economy)/(equipment_gems)/gem'
+      path: '/gem'
+      fullPath: '/gem'
+      preLoaderRoute: typeof economyequipment_gemsGemRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(equipment_gems)/flask': {
+      id: '/(economy)/(equipment_gems)/flask'
+      path: '/flask'
+      fullPath: '/flask'
+      preLoaderRoute: typeof economyequipment_gemsFlaskRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(equipment_gems)/bases': {
+      id: '/(economy)/(equipment_gems)/bases'
       path: '/bases'
       fullPath: '/bases'
-      preLoaderRoute: typeof economyBasesRouteImport
+      preLoaderRoute: typeof economyequipment_gemsBasesRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/armour': {
-      id: '/(economy)/armour'
+    '/(economy)/(equipment_gems)/armour': {
+      id: '/(economy)/(equipment_gems)/armour'
       path: '/armour'
       fullPath: '/armour'
-      preLoaderRoute: typeof economyArmourRouteImport
+      preLoaderRoute: typeof economyequipment_gemsArmourRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/accessory': {
-      id: '/(economy)/accessory'
+    '/(economy)/(equipment_gems)/accessory': {
+      id: '/(economy)/(equipment_gems)/accessory'
       path: '/accessory'
       fullPath: '/accessory'
-      preLoaderRoute: typeof economyAccessoryRouteImport
+      preLoaderRoute: typeof economyequipment_gemsAccessoryRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(atlas)/uniqueMap': {
+      id: '/(economy)/(atlas)/uniqueMap'
+      path: '/uniqueMap'
+      fullPath: '/uniqueMap'
+      preLoaderRoute: typeof economyatlasUniqueMapRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(atlas)/scarab': {
+      id: '/(economy)/(atlas)/scarab'
+      path: '/scarab'
+      fullPath: '/scarab'
+      preLoaderRoute: typeof economyatlasScarabRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(atlas)/map': {
+      id: '/(economy)/(atlas)/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof economyatlasMapRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(atlas)/invitation': {
+      id: '/(economy)/(atlas)/invitation'
+      path: '/invitation'
+      fullPath: '/invitation'
+      preLoaderRoute: typeof economyatlasInvitationRouteImport
+      parentRoute: typeof economyLayoutRoute
+    }
+    '/(economy)/(atlas)/deliriumOrb': {
+      id: '/(economy)/(atlas)/deliriumOrb'
+      path: '/deliriumOrb'
+      fullPath: '/deliriumOrb'
+      preLoaderRoute: typeof economyatlasDeliriumOrbRouteImport
       parentRoute: typeof economyLayoutRoute
     }
   }
 }
 
 interface economyLayoutRouteChildren {
-  economyAccessoryRoute: typeof economyAccessoryRoute
-  economyArmourRoute: typeof economyArmourRoute
-  economyBasesRoute: typeof economyBasesRoute
-  economyBeastRoute: typeof economyBeastRoute
-  economyCardRoute: typeof economyCardRoute
-  economyCurrencyRoute: typeof economyCurrencyRoute
-  economyDeliriumOrbRoute: typeof economyDeliriumOrbRoute
-  economyEssenceRoute: typeof economyEssenceRoute
-  economyFlaskRoute: typeof economyFlaskRoute
-  economyFossilRoute: typeof economyFossilRoute
-  economyFragmentRoute: typeof economyFragmentRoute
-  economyGemRoute: typeof economyGemRoute
-  economyHeistRoute: typeof economyHeistRoute
-  economyIncubatorRoute: typeof economyIncubatorRoute
-  economyInvitationRoute: typeof economyInvitationRoute
-  economyJewelRoute: typeof economyJewelRoute
-  economyMapRoute: typeof economyMapRoute
-  economyOilRoute: typeof economyOilRoute
-  economyResonatorRoute: typeof economyResonatorRoute
-  economyScarabRoute: typeof economyScarabRoute
-  economyUniqueMapRoute: typeof economyUniqueMapRoute
-  economyWeaponRoute: typeof economyWeaponRoute
+  economyatlasDeliriumOrbRoute: typeof economyatlasDeliriumOrbRoute
+  economyatlasInvitationRoute: typeof economyatlasInvitationRoute
+  economyatlasMapRoute: typeof economyatlasMapRoute
+  economyatlasScarabRoute: typeof economyatlasScarabRoute
+  economyatlasUniqueMapRoute: typeof economyatlasUniqueMapRoute
+  economyequipment_gemsAccessoryRoute: typeof economyequipment_gemsAccessoryRoute
+  economyequipment_gemsArmourRoute: typeof economyequipment_gemsArmourRoute
+  economyequipment_gemsBasesRoute: typeof economyequipment_gemsBasesRoute
+  economyequipment_gemsFlaskRoute: typeof economyequipment_gemsFlaskRoute
+  economyequipment_gemsGemRoute: typeof economyequipment_gemsGemRoute
+  economyequipment_gemsJewelRoute: typeof economyequipment_gemsJewelRoute
+  economyequipment_gemsWeaponRoute: typeof economyequipment_gemsWeaponRoute
+  economygeneralBeastRoute: typeof economygeneralBeastRoute
+  economygeneralCardRoute: typeof economygeneralCardRoute
+  economygeneralCurrencyRoute: typeof economygeneralCurrencyRoute
+  economygeneralEssenceRoute: typeof economygeneralEssenceRoute
+  economygeneralFossilRoute: typeof economygeneralFossilRoute
+  economygeneralFragmentRoute: typeof economygeneralFragmentRoute
+  economygeneralHeistRoute: typeof economygeneralHeistRoute
+  economygeneralIncubatorRoute: typeof economygeneralIncubatorRoute
+  economygeneralOilRoute: typeof economygeneralOilRoute
+  economygeneralResonatorRoute: typeof economygeneralResonatorRoute
 }
 
 const economyLayoutRouteChildren: economyLayoutRouteChildren = {
-  economyAccessoryRoute: economyAccessoryRoute,
-  economyArmourRoute: economyArmourRoute,
-  economyBasesRoute: economyBasesRoute,
-  economyBeastRoute: economyBeastRoute,
-  economyCardRoute: economyCardRoute,
-  economyCurrencyRoute: economyCurrencyRoute,
-  economyDeliriumOrbRoute: economyDeliriumOrbRoute,
-  economyEssenceRoute: economyEssenceRoute,
-  economyFlaskRoute: economyFlaskRoute,
-  economyFossilRoute: economyFossilRoute,
-  economyFragmentRoute: economyFragmentRoute,
-  economyGemRoute: economyGemRoute,
-  economyHeistRoute: economyHeistRoute,
-  economyIncubatorRoute: economyIncubatorRoute,
-  economyInvitationRoute: economyInvitationRoute,
-  economyJewelRoute: economyJewelRoute,
-  economyMapRoute: economyMapRoute,
-  economyOilRoute: economyOilRoute,
-  economyResonatorRoute: economyResonatorRoute,
-  economyScarabRoute: economyScarabRoute,
-  economyUniqueMapRoute: economyUniqueMapRoute,
-  economyWeaponRoute: economyWeaponRoute,
+  economyatlasDeliriumOrbRoute: economyatlasDeliriumOrbRoute,
+  economyatlasInvitationRoute: economyatlasInvitationRoute,
+  economyatlasMapRoute: economyatlasMapRoute,
+  economyatlasScarabRoute: economyatlasScarabRoute,
+  economyatlasUniqueMapRoute: economyatlasUniqueMapRoute,
+  economyequipment_gemsAccessoryRoute: economyequipment_gemsAccessoryRoute,
+  economyequipment_gemsArmourRoute: economyequipment_gemsArmourRoute,
+  economyequipment_gemsBasesRoute: economyequipment_gemsBasesRoute,
+  economyequipment_gemsFlaskRoute: economyequipment_gemsFlaskRoute,
+  economyequipment_gemsGemRoute: economyequipment_gemsGemRoute,
+  economyequipment_gemsJewelRoute: economyequipment_gemsJewelRoute,
+  economyequipment_gemsWeaponRoute: economyequipment_gemsWeaponRoute,
+  economygeneralBeastRoute: economygeneralBeastRoute,
+  economygeneralCardRoute: economygeneralCardRoute,
+  economygeneralCurrencyRoute: economygeneralCurrencyRoute,
+  economygeneralEssenceRoute: economygeneralEssenceRoute,
+  economygeneralFossilRoute: economygeneralFossilRoute,
+  economygeneralFragmentRoute: economygeneralFragmentRoute,
+  economygeneralHeistRoute: economygeneralHeistRoute,
+  economygeneralIncubatorRoute: economygeneralIncubatorRoute,
+  economygeneralOilRoute: economygeneralOilRoute,
+  economygeneralResonatorRoute: economygeneralResonatorRoute,
 }
 
 const economyLayoutRouteWithChildren = economyLayoutRoute._addFileChildren(
