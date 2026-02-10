@@ -6,6 +6,7 @@ import { memo } from "react";
 import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import { DropdownMenuAvatar } from "@/components/dropdown";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/shadcn/avatar";
 import { DropdownMenuItem } from "@/components/shadcn/dropdown-menu";
 import { Separator } from "@/components/shadcn/separator";
@@ -14,6 +15,7 @@ import { useLeagues } from "@/hooks/leagues";
 
 export const SidebarDashboardHeader = memo(() => {
   const { leaguesData, selectedLeague, setSelectedLeague } = useLeagues();
+
   return (
     <header
       className="bg-sidebar sticky top-0 z-20 flex h-16 w-full shrink-0 items-center gap-2 border-b
@@ -26,12 +28,12 @@ export const SidebarDashboardHeader = memo(() => {
       </div>
 
       <div className="mr-10 ml-auto flex items-center gap-2 px-4">
+        <ModeToggle />
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-8"
         >
-          {" "}
           <DropdownMenuAvatar
             trigger={
               <ButtonWrapper variant="outline">
