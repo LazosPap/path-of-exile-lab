@@ -1,1 +1,1 @@
-export * from "./leaguesQueryOptions";
+export * from "./queryOptions";

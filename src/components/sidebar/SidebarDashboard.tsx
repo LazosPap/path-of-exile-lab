@@ -7,7 +7,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -22,8 +21,12 @@ export type SidebarDashboardProps = {
 
 export function SidebarDashboard({ children }: SidebarDashboardProps) {
   return (
-    <Sidebar collapsible="icon">
-      <MotionDiv initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
+    <Sidebar className="flex h-screen flex-col" collapsible="icon">
+      <MotionDiv
+        className="flex h-full flex-col"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+      >
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
@@ -33,43 +36,26 @@ export function SidebarDashboard({ children }: SidebarDashboardProps) {
                     className="text-primary-foreground flex aspect-square size-12 items-center
                       justify-center"
                   >
-                    <img src={PoeLabLogo} className="max-h-16 dark:invert" alt={"Logo"} />
+                    <img src={PoeLabLogo} className="h-fit dark:invert" alt={"Logo"} />
                   </div>
                   <div
                     className="text-bold text-secondary-foreground grid flex-1 text-left text-sm
                       leading-tight"
                   >
                     <span className="text-primary truncate font-semibold">Poe Lab</span>
-                    <span className="text-secondary truncate text-xs">Categories</span>
+                    <span className="text-foreground truncate text-xs font-semibold">
+                      Categories
+                    </span>
                   </div>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-        <SidebarContent>
+        <SidebarContent className="flex-1 overflow-auto">
           <SidebarGroup>
-            <SidebarGroupLabel>Select category</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu>
-                {children}
-                {/* {dropdownItems.map(({ url, icon: Icon, label }) => {
-                  const isActive =
-                    location.pathname === url || location.pathname.startsWith(`${url}/`);
-                  return (
-                    <SidebarMenuItem key={url}>
-                      <SidebarMenuButton asChild isActive={isActive}>
-                        <Link to={url}>
-                          <div>
-                            <Icon className="text-primary" size={18} />
-                          </div>
-                          <span>{t(label)}</span>
-                        </Link>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  );
-                })} */}
-              </SidebarMenu>
+              <SidebarMenu>{children}</SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
