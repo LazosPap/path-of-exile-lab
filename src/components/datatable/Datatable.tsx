@@ -12,6 +12,7 @@ import { useState } from "react";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import { LoadingSpinner } from "@/components/loadingSpinner";
 import { Input } from "@/components/shadcn/input";
+import { Skeleton } from "@/components/shadcn/skeleton";
 import {
   Table,
   TableBody,
@@ -23,16 +24,18 @@ import {
 
 import type { ColumnDef, ColumnFiltersState, SortingState } from "@tanstack/react-table";
 
-interface DataTableProps<TData, TValue> {
+export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   isFetching: boolean;
+  isLoading: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
   isFetching,
+  isLoading,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -96,10 +99,25 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
+            {/* isFetching for new data sets. */}
             {isFetching && <LoadingSpinner />}
-            {table.getRowModel().rows?.length ? (
+            {/* 
+              isLoading for the first init load of the data set, and we have passed on columns dynamic skeletons,
+              so we can call column.columnDef.meta?.skeleton.
+            */}
+            {isLoading ? (
+              Array.from({ length: 5 }).map((_, rowIndex) => (
+                <TableRow key={`skeleton-${rowIndex}`}>
+                  {table.getVisibleLeafColumns().map((column) => (
+                    <TableCell key={column.id}>
+                      {column.columnDef.meta?.skeleton ?? <Skeleton className="h-4 w-full" />}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
