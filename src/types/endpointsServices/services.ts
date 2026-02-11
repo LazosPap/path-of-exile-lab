@@ -10,6 +10,11 @@ export type CategoriesParams = {
   endpoint: string;
 };
 
+export type ItemsParams = {
+  endpoint: string;
+  queryParams: GetItemsParams;
+};
+
 export type League = {
   name: string;
   start_date: string;
@@ -37,3 +42,41 @@ export type Categories = {
   display: string; // The user-friendly name for the category
   groups: []; // Sub-groups within this category.
 };
+
+export interface GetItemsParams {
+  league: string;
+  category: string;
+  lowConfidence?: boolean;
+  linkCount?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  gemLevel?: number;
+  gemCorrupted?: boolean;
+  itemLevel?: number;
+  gemQuality?: number;
+}
+
+export interface Item {
+  id: number;
+  name: string;
+  category: string;
+  group: string;
+  frame: number;
+  influences: null;
+  linkCount: number;
+  icon: string;
+
+  mean: number;
+  min: number;
+  max: number;
+  exalted: number;
+  daily: number;
+  change: number;
+
+  history: [];
+
+  lowConfidence: boolean;
+  perfectPrice: number;
+  perfectAmount: number;
+
+  implicits: string[] | null;
+  explicits: string[] | null;
+}
