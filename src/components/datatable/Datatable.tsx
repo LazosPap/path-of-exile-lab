@@ -99,7 +99,12 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
+            {/* isFetching for new data sets. */}
             {isFetching && <LoadingSpinner />}
+            {/* 
+              isLoading for the first init load of the data set, and we have passed on columns dynamic skeletons,
+              so we can call column.columnDef.meta?.skeleton.
+            */}
             {isLoading ? (
               Array.from({ length: 5 }).map((_, rowIndex) => (
                 <TableRow key={`skeleton-${rowIndex}`}>
