@@ -2,6 +2,7 @@ import { ArrowUpDown } from "lucide-react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import MiniChart from "@/components/charts/MiniChart";
+import { Skeleton } from "@/components/shadcn/skeleton";
 
 import type { Item } from "@/types/endpointsServices";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -31,6 +32,14 @@ export const columns: ColumnDef<Item>[] = [
         </div>
       );
     },
+    meta: {
+      skeleton: (
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-10 w-10 rounded-md" />
+          <Skeleton className="h-4 w-24" />
+        </div>
+      ),
+    },
   },
   {
     accessorKey: "mean",
@@ -57,6 +66,14 @@ export const columns: ColumnDef<Item>[] = [
           <span>{row.original.mean}</span>
         </div>
       );
+    },
+    meta: {
+      skeleton: (
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-10 w-10 rounded-md" />
+          <Skeleton className="h-4 w-16" />
+        </div>
+      ),
     },
   },
   {
@@ -88,6 +105,14 @@ export const columns: ColumnDef<Item>[] = [
           <MiniChart data={row.original.history} />
         </div>
       );
+    },
+    meta: {
+      skeleton: (
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-16" />
+          <Skeleton className="h-12 w-full rounded-md" />
+        </div>
+      ),
     },
   },
 ];

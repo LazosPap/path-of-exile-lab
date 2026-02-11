@@ -15,15 +15,19 @@ export function CurrencyPage() {
     category: CATEGORY_NAMES.CURRENCY,
   };
 
-  /** @TODO IMPORT FOR THE ISLOADING THE SKELETON DATATABLE. */
-  const { data, isFetching } = useQuery(
+  const { data, isFetching, isLoading } = useQuery(
     getItemsQueryOptions({ endpoint: ITEMS_ENDPOINTS.GET, queryParams }),
   );
 
   return (
     <div className="container mx-auto py-10">
       <h1 className="text-3xl font-semibold">Currency</h1>
-      <DataTable columns={columns} data={data ?? []} isFetching={isFetching} />
+      <DataTable
+        columns={columns}
+        data={data ?? []}
+        isFetching={isFetching}
+        isLoading={isLoading}
+      />
     </div>
   );
 }
