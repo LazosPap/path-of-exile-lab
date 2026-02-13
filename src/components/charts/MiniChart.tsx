@@ -8,7 +8,7 @@ import {
 } from "@/components/shadcn/chart";
 
 interface MiniChartProps {
-  data: { date: string; value: number }[];
+  data: { date: string; meanPrice: number }[];
 }
 
 const chartConfig = {
@@ -19,7 +19,11 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function MiniChart({ data }: MiniChartProps) {
-  const chartData = data?.map((value, index) => ({ index, value }));
+  const chartData = data?.map((item, index) => ({
+    index,
+    value: item.meanPrice,
+    date: item.date,
+  }));
 
   return (
     <div className="h-16 w-32">
@@ -29,6 +33,8 @@ export default function MiniChart({ data }: MiniChartProps) {
             accessibilityLayer
             data={chartData}
             margin={{
+              top: 10,
+              bottom: 5,
               left: 12,
               right: 12,
             }}

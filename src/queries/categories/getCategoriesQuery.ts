@@ -1,15 +1,30 @@
 import { queryOptions } from "@tanstack/react-query";
 
-import { getCategories, getItems } from "@/services/poeService/categories";
+import { getCategories, getExchanges, getItems } from "@/services/poeService/categories";
 
-import type { Categories, GetItemsParams, Item } from "@/types/endpointsServices";
-import type { CategoriesQueryOptionsParams, ItemsQueryOptionsParams } from "@/types/queryOptions";
+import type {
+  Categories,
+  ExchangeItem,
+  GetExchangeRatiosParams,
+  GetItemsParams,
+  Item,
+} from "@/types/endpointsServices";
+import type {
+  CategoriesQueryOptionsParams,
+  ExchangesQueryOptionsParams,
+  ItemsQueryOptionsParams,
+} from "@/types/queryOptions";
 
 /** Query key factory. */
 export const categoriesKeys = {
   all: ["categories"] as const,
   categories: (endpoint: string) => [...categoriesKeys.all, endpoint],
   items: (endpoint: string, queryParams: GetItemsParams) => [
+    ...categoriesKeys.all,
+    endpoint,
+    queryParams,
+  ],
+  exchanges: (endpoint: string, queryParams: GetExchangeRatiosParams) => [
     ...categoriesKeys.all,
     endpoint,
     queryParams,
@@ -30,5 +45,18 @@ export function getItemsQueryOptions({ endpoint, queryParams }: ItemsQueryOption
     queryKey: categoriesKeys.items(endpoint, queryParams),
     queryFn: () => getItems<Item[]>({ endpoint, queryParams }),
     placeholderData: (prev) => prev,
+  });
+}
+
+export function getExchangesQueryOptions({
+  endpoint,
+  queryParams,
+  enabled,
+}: ExchangesQueryOptionsParams) {
+  return queryOptions({
+    queryKey: categoriesKeys.exchanges(endpoint, queryParams),
+    queryFn: () => getExchanges<ExchangeItem>({ endpoint, queryParams }),
+    placeholderData: (prev) => prev,
+    enabled,
   });
 }
