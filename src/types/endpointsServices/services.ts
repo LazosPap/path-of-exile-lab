@@ -15,6 +15,11 @@ export type ItemsParams = {
   queryParams: GetItemsParams;
 };
 
+export type ExchangeParams = {
+  endpoint: string;
+  queryParams: GetExchangeRatiosParams;
+};
+
 export type League = {
   name: string;
   start_date: string;
@@ -44,7 +49,7 @@ export type Categories = {
 };
 
 export interface GetItemsParams {
-  league: string;
+  league: string | undefined;
   category: string;
   lowConfidence?: boolean;
   linkCount?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -52,6 +57,11 @@ export interface GetItemsParams {
   gemCorrupted?: boolean;
   itemLevel?: number;
   gemQuality?: number;
+}
+
+export interface GetExchangeRatiosParams {
+  league: string | undefined;
+  game: string;
 }
 
 export interface Item {
@@ -70,6 +80,7 @@ export interface Item {
   exalted: number;
   daily: number;
   change: number;
+  divine: number;
 
   history: [];
 
@@ -79,4 +90,42 @@ export interface Item {
 
   implicits: string[] | null;
   explicits: string[] | null;
+}
+
+export interface ExchangeItem {
+  id: number;
+  name: string;
+  icon: string;
+  category: string;
+
+  chaos: CurrencyData;
+  divine: CurrencyData;
+
+  // Top-level convenience values
+  chaosValue: number;
+  divineValue: number;
+  change24H: number; // maybe use chaos.change24H as default
+  lowConfidence: boolean;
+  pairID: number;
+  timestamp: number;
+  value: number;
+  volume: number;
+  volume24H: number;
+}
+
+export interface CurrencyData {
+  value: number;
+  lowConfidence: boolean;
+  timestamp: number;
+  volume: number;
+  change24H: number;
+  chaosValue?: number;
+  divineValue?: number;
+  pairID?: number;
+  history7D?: History7D[];
+}
+
+export interface History7D {
+  date: string; // keep as string from API; you can convert to Date if needed
+  meanPrice: number;
 }

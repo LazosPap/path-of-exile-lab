@@ -16,3 +16,7 @@ export const ITEMS_ENDPOINTS = {
   SEARCH: "/search",
   INSCRIBED: "/inscribed",
 };
+
+export const EXCHANGE_ENDPOINTS = {
+  EXCHANGES_RATIOS: "/exchange/ratios",
+};

@@ -37,7 +37,12 @@ export function DataTable<TData, TValue>({
   isFetching,
   isLoading,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    {
+      id: "divineValue",
+      desc: true,
+    },
+  ]);
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -81,7 +86,7 @@ export function DataTable<TData, TValue>({
           </div>
         </div>
       </div>
-      <div className="overflow-hidden rounded-md border">
+      <div className="relative overflow-hidden rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -99,8 +104,6 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {/* isFetching for new data sets. */}
-            {isFetching && <LoadingSpinner />}
             {/* 
               isLoading for the first init load of the data set, and we have passed on columns dynamic skeletons,
               so we can call column.columnDef.meta?.skeleton.
@@ -134,6 +137,8 @@ export function DataTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
+        {/* isFetching for new data sets. */}
+        {isFetching && <LoadingSpinner />}
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <ButtonWrapper
