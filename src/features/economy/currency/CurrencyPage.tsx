@@ -29,7 +29,7 @@ export function CurrencyPage() {
   const currencyOnly = data?.filter((item) => item.category === CATEGORY_NAMES.CURRENCY);
   /** @TODO CREATE A CONFIG FOR EACH DATATABLE SO WE AVOID THE REPETITION. */
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 w-2/3">
       <h1 className="text-3xl font-semibold">Currency</h1>
       <DataTable
         columns={columns}

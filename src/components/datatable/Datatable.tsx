@@ -63,7 +63,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="flex items-center py-4">
+      <div className="flex items-center justify-between py-4">
         <div className="w-full max-w-xs space-y-2">
           <div className="relative">
             <div
@@ -84,6 +84,24 @@ export function DataTable<TData, TValue>({
                 [&::-webkit-search-results-decoration]:appearance-none"
             />
           </div>
+        </div>
+        <div className="flex items-center space-x-2">
+          <ButtonWrapper
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </ButtonWrapper>
+          <ButtonWrapper
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </ButtonWrapper>
         </div>
       </div>
       <div className="relative overflow-hidden rounded-md border">
