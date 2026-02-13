@@ -4,11 +4,11 @@ import ButtonWrapper from "@/components/button/ButtonWrapper";
 import MiniChart from "@/components/charts/MiniChart";
 import { Skeleton } from "@/components/shadcn/skeleton";
 
-import type { Item } from "@/types/endpointsServices";
+import type { ExchangeItem } from "@/types/endpointsServices";
 import type { ColumnDef } from "@tanstack/react-table";
 
 /** @TODO REFACTOR THE COLUMNS SO WE CAN DO LESS HARD TEXT. */
-export const columns: ColumnDef<Item>[] = [
+export const columns: ColumnDef<ExchangeItem>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -42,7 +42,18 @@ export const columns: ColumnDef<Item>[] = [
     },
   },
   {
-    accessorKey: "mean",
+    id: "divineValue",
+    accessorFn: (row: ExchangeItem) => {
+      const divine = row.divine;
+      const chaos = row.chaos;
+
+      // If divine is base currency (value === 1), use chaos instead
+      if (divine?.value === 1) {
+        return chaos?.divineValue ?? 0;
+      }
+
+      return divine?.divineValue ?? chaos?.divineValue ?? 0;
+    },
     header: ({ column }) => {
       return (
         <ButtonWrapper
@@ -55,15 +66,24 @@ export const columns: ColumnDef<Item>[] = [
       );
     },
     cell: ({ row }) => {
+      const divine = row.original.divine;
+      const chaos = row.original.chaos;
+
+      const useChaos = divine?.value === 1;
+
+      const value = useChaos
+        ? (chaos?.divineValue ?? 0)
+        : (divine?.divineValue ?? chaos?.divineValue ?? 0);
+
       return (
         <div className="flex items-center gap-2">
           <div className="flex size-10 w-fit shrink-0 items-center justify-center">
             <img
-              src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/d119a0d734/CurrencyRerollRare.png"
-              className="h-10 w-10 object-contain"
+              src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RWYWx1ZXMiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/e1a54ff97d/CurrencyModValues.png"
+              className="h-8 w-8 object-contain"
             />
           </div>
-          <span>{row.original.mean}</span>
+          <span>{value}</span>
         </div>
       );
     },
@@ -77,21 +97,36 @@ export const columns: ColumnDef<Item>[] = [
     },
   },
   {
-    accessorKey: "history",
     id: "trend",
+    accessorFn: (row: ExchangeItem) => {
+      const divineChange = row.divine?.change24H ?? 0;
+      const chaosChange = row.chaos?.change24H ?? 0;
+
+      // If divine has real value use it, otherwise fallback
+      return divineChange !== 0 ? divineChange : chaosChange;
+    },
     header: ({ column }) => {
       return (
         <ButtonWrapper
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          History
+          Last 7 days
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </ButtonWrapper>
       );
     },
     cell: ({ row }) => {
-      const change = row.original.change;
+      const divine = row.original.divine;
+      const chaos = row.original.chaos;
+
+      const change =
+        divine?.change24H && divine.change24H !== 0 ? divine.change24H : (chaos?.change24H ?? 0);
+
+      const history =
+        divine?.history7D && divine.history7D.length > 0
+          ? divine.history7D
+          : (chaos?.history7D ?? []);
 
       let colorClass = "text-muted-foreground";
 
@@ -102,7 +137,7 @@ export const columns: ColumnDef<Item>[] = [
           <span className={`font-semibold ${colorClass}`}>
             {change > 0 ? `+${change}%` : `${change}%`}
           </span>
-          <MiniChart data={row.original.history} />
+          <MiniChart data={history} />
         </div>
       );
     },

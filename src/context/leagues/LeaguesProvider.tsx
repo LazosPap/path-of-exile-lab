@@ -8,6 +8,7 @@ import type { League } from "@/types/endpointsServices";
 
 export interface TLeaguesProviderContext {
   selectedLeague: League | undefined;
+  isFetching: boolean;
   setSelectedLeague: Dispatch<SetStateAction<League | undefined>>;
   leaguesData: League[] | undefined;
 }
@@ -19,11 +20,12 @@ export function LeaguesProvider({ children }: { children: ReactNode }) {
   const [selectedLeague, setSelectedLeague] = useState<League>();
 
   /** Call the query for the leagues dropdown data. */
-  const { data: leaguesData } = useQuery(
+  const { data: leaguesData, isFetching } = useQuery(
     getLeaguesQueryOptions({ endpoint: LEAGUES_ENDPOINTS.LEAGUES }),
   );
+
   return (
-    <LeaguesContext.Provider value={{ leaguesData, selectedLeague, setSelectedLeague }}>
+    <LeaguesContext.Provider value={{ leaguesData, isFetching, selectedLeague, setSelectedLeague }}>
       {children}
     </LeaguesContext.Provider>
   );

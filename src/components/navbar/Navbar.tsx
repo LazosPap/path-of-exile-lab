@@ -6,6 +6,7 @@ import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
 import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import { DropdownMenuAvatar } from "@/components/dropdown";
+import { LoadingSpinner } from "@/components/loadingSpinner";
 import { ModeToggle } from "@/components/mode-toggle";
 import {
   Accordion,
@@ -118,7 +119,7 @@ const Navbar = ({
   className,
 }: NavbarProps) => {
   /** Call the global hook for the leagues selection. */
-  const { leaguesData, selectedLeague, setSelectedLeague } = useLeagues();
+  const { leaguesData, isFetching, selectedLeague, setSelectedLeague } = useLeagues();
 
   return (
     <section className={cn("py-4", className)}>
@@ -154,6 +155,7 @@ const Navbar = ({
                   key={index}
                   className="flex justify-between"
                 >
+                  {isFetching && <LoadingSpinner />}
                   <Avatar className="w-12">
                     <AvatarImage src={Path_of_exile_logo} alt={league.name} />
                     <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
@@ -213,6 +215,7 @@ const Navbar = ({
                   >
                     {leaguesData?.map((league, index) => (
                       <DropdownMenuItem key={index} className="flex justify-between">
+                        {isFetching && <LoadingSpinner />}
                         <Avatar className="w-12">
                           <AvatarImage src={Path_of_exile_logo} alt={league.name} />
                           <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
