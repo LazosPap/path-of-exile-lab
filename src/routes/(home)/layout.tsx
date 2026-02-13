@@ -1,5 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
+import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 
 import type { ReactNode } from "react";
@@ -14,6 +15,8 @@ export function HomeLayout({ children }: { children?: ReactNode }) {
       <Navbar />
 
       <main className="w-full grow">{children ?? <Outlet />}</main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { ContainerScrollAnimation } from "@/features/home/components";
 import { HomeLayout } from "@/routes/(home)/layout";
 
 export const Route = createFileRoute("/")({
@@ -9,9 +10,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <HomeLayout>
-      <div className="p-2">
-        <h3>Welcome Home!</h3>
-      </div>
+      <ContainerScrollAnimation />
     </HomeLayout>
   );
 }
