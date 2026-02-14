@@ -4,7 +4,7 @@ import { Minus } from "lucide-react";
 
 import Leagues_banner from "@/assets/images/League_banner.webp";
 import { TiltedCard } from "@/components/cards";
-import AnimatedDiv from "@/components/motion/AnimatedDiv";
+import { AnimatedDiv } from "@/components/motion";
 import { TiltedCardSkeleton } from "@/components/skeletons/cards";
 import { LEAGUES_ENDPOINTS } from "@/constants/endpoints";
 import { getLeaguesQueryOptions } from "@/queries/leagues";
