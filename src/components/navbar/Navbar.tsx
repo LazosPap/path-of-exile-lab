@@ -1,11 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
 import { format, parseISO } from "date-fns";
-import { Book, CheckIcon, Menu, Minus, Sunset, Trees, Zap } from "lucide-react";
+import { CheckIcon, Menu, Minus } from "lucide-react";
+import { useState } from "react";
+import { useDebounce } from "use-debounce";
 
 import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
 import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import { DropdownMenuAvatar } from "@/components/dropdown";
+import { AutoComplete } from "@/components/inputs/Autocomplete";
 import { LoadingSpinner } from "@/components/loadingSpinner";
 import { ModeToggle } from "@/components/mode-toggle";
 import {
@@ -32,9 +36,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/shadcn/sheet";
+import { SEARCH_ENDPOINTS } from "@/constants/endpoints";
 import { useLeagues } from "@/hooks/leagues";
 import { cn } from "@/lib/utils";
+import { getSearchQueryOptions } from "@/queries/search";
 
+import type { GetSearchParams } from "@/types/endpointsServices";
 import type { MenuItem, NavbarProps } from "@/types/navbar";
 
 const Navbar = ({
@@ -46,66 +53,6 @@ const Navbar = ({
   },
   menu = [
     { title: "Home", url: "/" },
-    {
-      title: "Products",
-      url: "#",
-      items: [
-        {
-          title: "Blog",
-          description: "The latest industry news, updates, and info",
-          icon: <Book className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Company",
-          description: "Our mission is to innovate and empower the world",
-          icon: <Trees className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Careers",
-          description: "Browse job listing and discover our workspace",
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Support",
-          description: "Get in touch with our support team or visit our community forums",
-          icon: <Zap className="size-5 shrink-0" />,
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Resources",
-      url: "#",
-      items: [
-        {
-          title: "Help Center",
-          description: "Get all the answers you need right here",
-          icon: <Zap className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Contact Us",
-          description: "We are here to help you with any questions you have",
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Status",
-          description: "Check the current status of our services and APIs",
-          icon: <Trees className="size-5 shrink-0" />,
-          url: "#",
-        },
-        {
-          title: "Terms of Service",
-          description: "Our terms and conditions for using our services",
-          icon: <Book className="size-5 shrink-0" />,
-          url: "#",
-        },
-      ],
-    },
     {
       title: "Economy",
       url: "/currency",
@@ -121,6 +68,34 @@ const Navbar = ({
   /** Call the global hook for the leagues selection. */
   const { leaguesData, isFetching, selectedLeague, setSelectedLeague } = useLeagues();
 
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>("");
+
+  const [debouncedSearch] = useDebounce(searchValue, 300);
+
+  const params: GetSearchParams = {
+    league: selectedLeague?.name,
+    q: debouncedSearch,
+  };
+
+  const {
+    data,
+    isLoading,
+    isFetching: searchFetching,
+  } = useQuery(
+    getSearchQueryOptions({
+      endpoint: SEARCH_ENDPOINTS.SEARCH,
+      queryParams: params,
+      enabled: !!selectedLeague?.name,
+    }),
+  );
+
+  const items = data?.map((item) => ({
+    value: item.id,
+    label: item.name,
+    icon: item.icon,
+  }));
+
   return (
     <section className={cn("py-4", className)}>
       <div className="container">
@@ -129,7 +104,7 @@ const Navbar = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <Link to={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8 dark:invert" alt={logo.alt} />
+              <img src={logo.src} className="max-h-24 dark:invert" alt={logo.alt} />
               <span className="text-lg font-semibold tracking-tighter">{logo.title}</span>
             </Link>
             <div className="flex items-center">
@@ -138,6 +113,18 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
+          <AutoComplete
+            selectedValue={selectedValue}
+            placeholder="Search items..."
+            onSelectedValueChange={setSelectedValue}
+            searchValue={searchValue}
+            onSearchValueChange={setSearchValue}
+            items={items ?? []}
+            isLoading={isLoading}
+            isFetching={searchFetching}
+            disabled={!selectedLeague}
+            emptyMessage="No items found."
+          />
           <div className="flex gap-2">
             <ModeToggle />
             <DropdownMenuAvatar
@@ -203,6 +190,18 @@ const Navbar = ({
                   <Accordion type="single" collapsible className="flex w-full flex-col gap-4">
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
+                  <AutoComplete
+                    selectedValue={selectedValue}
+                    placeholder="Search items..."
+                    onSelectedValueChange={setSelectedValue}
+                    searchValue={searchValue}
+                    onSearchValueChange={setSearchValue}
+                    items={items ?? []}
+                    isLoading={isLoading}
+                    isFetching={searchFetching}
+                    disabled={!selectedLeague}
+                    emptyMessage="No items found."
+                  />
                   <ModeToggle />
                   <DropdownMenuAvatar
                     trigger={
