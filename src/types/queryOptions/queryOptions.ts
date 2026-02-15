@@ -1,9 +1,19 @@
 /** All the types for the queryOptions so we can have them all together in one place. */
 
-import type { GetExchangeRatiosParams, GetItemsParams } from "@/types/endpointsServices";
+import type {
+  GetExchangeRatiosParams,
+  GetItemsParams,
+  GetSearchParams,
+} from "@/types/endpointsServices";
 
 export type LeaguesQueryOptionsParams = {
   endpoint: string;
+};
+
+export type SearchQueryOptionsParams = {
+  endpoint: string;
+  queryParams: GetSearchParams;
+  enabled: boolean;
 };
 
 export type CategoriesQueryOptionsParams = {

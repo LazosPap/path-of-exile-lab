@@ -5,6 +5,10 @@ export const LEAGUES_ENDPOINTS = {
   LEAGUES: "/leagues",
 };
 
+export const SEARCH_ENDPOINTS = {
+  SEARCH: "/search",
+};
+
 export const CATEGORIES_ENDPOINTS = {
   CATEGORIES: "/categories",
 };
