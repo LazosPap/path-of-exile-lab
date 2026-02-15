@@ -6,12 +6,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
+import { SearchInput } from "@/components/inputs";
 import { LoadingSpinner } from "@/components/loadingSpinner";
-import { Input } from "@/components/shadcn/input";
 import { Skeleton } from "@/components/shadcn/skeleton";
 import {
   Table,
@@ -65,25 +64,7 @@ export function DataTable<TData, TValue>({
     <>
       <div className="flex items-center justify-between py-4">
         <div className="w-full max-w-xs space-y-2">
-          <div className="relative">
-            <div
-              className="text-muted-foreground pointer-events-none absolute inset-y-0 left-0 flex
-                items-center justify-center pl-3 peer-disabled:opacity-50"
-            >
-              <SearchIcon className="size-4" />
-              <span className="sr-only">Search</span>
-            </div>
-            <Input
-              type="search"
-              placeholder="Search by name"
-              value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-              onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
-              className="peer px-9 [&::-webkit-search-cancel-button]:appearance-none
-                [&::-webkit-search-decoration]:appearance-none
-                [&::-webkit-search-results-button]:appearance-none
-                [&::-webkit-search-results-decoration]:appearance-none"
-            />
-          </div>
+          <SearchInput />
         </div>
         <div className="flex items-center space-x-2">
           <ButtonWrapper

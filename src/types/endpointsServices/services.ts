@@ -9,6 +9,10 @@ export type LeaguesParams = {
 export type CategoriesParams = {
   endpoint: string;
 };
+export type SearchParams = {
+  endpoint: string;
+  queryParams: GetSearchParams;
+};
 
 export type ItemsParams = {
   endpoint: string;
@@ -24,6 +28,12 @@ export type League = {
   name: string;
   start_date: string;
   end_date: string;
+};
+
+export type SearchItem = {
+  id: string;
+  icon: string;
+  name: string;
 };
 
 /** Type for the const sidebar. */
@@ -57,6 +67,11 @@ export interface GetItemsParams {
   gemCorrupted?: boolean;
   itemLevel?: number;
   gemQuality?: number;
+}
+
+export interface GetSearchParams {
+  league: string | undefined;
+  q: string; // It's the item name
 }
 
 export interface GetExchangeRatiosParams {
@@ -104,7 +119,7 @@ export interface ExchangeItem {
   // Top-level convenience values
   chaosValue: number;
   divineValue: number;
-  change24H: number; // maybe use chaos.change24H as default
+  change24H: number;
   lowConfidence: boolean;
   pairID: number;
   timestamp: number;
