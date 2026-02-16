@@ -1,4 +1,4 @@
-import ContainerImage from "@/assets/images/ContainerImage.png";
+import { ContainerImage } from "@/assets/images";
 import { ContainerScroll } from "@/components/shadcn/container-scroll-animation";
 
 export function ContainerScrollAnimation() {
