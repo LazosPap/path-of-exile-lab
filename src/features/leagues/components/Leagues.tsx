@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
 import { Minus } from "lucide-react";
 
-import Leagues_banner from "@/assets/images/League_banner.webp";
+import { LeagueBanner } from "@/assets/images";
 import { TiltedCard } from "@/components/cards";
 import { AnimatedDiv } from "@/components/motion";
 import { TiltedCardSkeleton } from "@/components/skeletons/cards";
@@ -50,7 +50,7 @@ export function Leagues() {
           <AnimatedDiv index={index}>
             <TiltedCard
               key={index}
-              imageSrc={Leagues_banner}
+              imageSrc={LeagueBanner}
               altText={league?.name}
               captionText={league?.name}
               containerHeight="300px"

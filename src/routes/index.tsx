@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { AnimatedDiv } from "@/components/motion";
 import GridMotion from "@/components/motion/GridMotion";
 import { IMAGES_URLS } from "@/constants/imagesUrls";
-import { ContainerScrollAnimation, TabsDemo } from "@/features/home/components";
+import { CardSwapAnimated, ContainerScrollAnimation } from "@/features/home/components";
 import { HomeLayout } from "@/routes/(home)/layout";
 
 export const Route = createFileRoute("/")({
@@ -13,6 +13,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   /** Loop all the constants images we have for the GridMotion component. */
   const imageItems = Object.values(IMAGES_URLS).flatMap((category) => Object.values(category));
+
   return (
     <HomeLayout>
       <AnimatedDiv>
@@ -29,8 +30,9 @@ function Index() {
           <GridMotion items={imageItems} gradientColor="black" />
         </div>
       </AnimatedDiv>
+
       <AnimatedDiv>
-        <TabsDemo />
+        <CardSwapAnimated />
       </AnimatedDiv>
     </HomeLayout>
   );

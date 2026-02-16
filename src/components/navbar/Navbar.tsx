@@ -5,8 +5,7 @@ import { CheckIcon, Menu, Minus } from "lucide-react";
 import { useState } from "react";
 import { useDebounce } from "use-debounce";
 
-import Path_of_exile_logo from "@/assets/images/Path_of_Exile_Logo.svg";
-import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
+import { PoeLabLogo, PoeLogo } from "@/assets/images";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import { DropdownMenuAvatar } from "@/components/dropdown";
 import { AutoComplete } from "@/components/inputs/Autocomplete";
@@ -144,7 +143,7 @@ const Navbar = ({
                 >
                   {isFetching && <LoadingSpinner />}
                   <Avatar className="w-12">
-                    <AvatarImage src={Path_of_exile_logo} alt={league.name} />
+                    <AvatarImage src={PoeLogo} alt={league.name} />
                     <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-1 flex-col">
@@ -216,7 +215,7 @@ const Navbar = ({
                       <DropdownMenuItem key={index} className="flex justify-between">
                         {isFetching && <LoadingSpinner />}
                         <Avatar className="w-12">
-                          <AvatarImage src={Path_of_exile_logo} alt={league.name} />
+                          <AvatarImage src={PoeLogo} alt={league.name} />
                           <AvatarFallback className="text-xs">{league.name}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-1 flex-col">

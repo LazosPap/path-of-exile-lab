@@ -1,8 +1,7 @@
-import Currency_image from "@/assets/images/ContainerImage.png";
-import Leagues_banner from "@/assets/images/Leagues.png";
+import { ContainerImage, LeagueBanner } from "@/assets/images";
 import { Tabs } from "@/features/home/components/Tabs";
 
-export function TabsDemo() {
+export function AnimatedTabs() {
   const tabs = [
     {
       title: "Currency",
@@ -14,7 +13,7 @@ export function TabsDemo() {
         >
           <p>Currency Overview</p>
           <img
-            src={Currency_image}
+            src={ContainerImage}
             alt="dummy image"
             width="1000"
             height="1000"
@@ -34,7 +33,7 @@ export function TabsDemo() {
         >
           <p>Leagues Overview</p>
           <img
-            src={Leagues_banner}
+            src={LeagueBanner}
             alt="dummy image"
             width="1000"
             height="1000"
