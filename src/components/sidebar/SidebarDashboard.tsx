@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import PoeLabLogo from "@/assets/images/Poe_lab_logo.svg";
+import { PoeLabLogo } from "@/assets/images";
 import { MotionDiv } from "@/components/motion";
 import {
   Sidebar,
