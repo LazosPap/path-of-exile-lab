@@ -3,6 +3,7 @@ import { CATEGORY_NAMES_EXCHANGE, CATEGORY_NAMES_STASH } from "@/constants/sideb
 
 import type { EntityPageConfig } from "@/types/config";
 
+/** @TODO UPDATE THE UNDEFINED ROUTES. */
 export const PAGE_CONFIG = {
   CURRENCY: {
     TITLE: "Currency",
