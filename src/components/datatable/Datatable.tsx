@@ -6,11 +6,12 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
-import { SearchInput } from "@/components/inputs";
 import { LoadingSpinner } from "@/components/loadingSpinner";
+import { Input } from "@/components/shadcn/input";
 import { Skeleton } from "@/components/shadcn/skeleton";
 import {
   Table,
@@ -23,25 +24,23 @@ import {
 
 import type { ColumnDef, ColumnFiltersState, SortingState } from "@tanstack/react-table";
 
-export interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+export interface DataTableProps<TData> {
+  columns: ColumnDef<TData>[];
   data: TData[];
   isFetching: boolean;
   isLoading: boolean;
+  defaultSorting?: SortingState;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData>({
   columns,
   data,
   isFetching,
   isLoading,
-}: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([
-    {
-      id: "divineValue",
-      desc: true,
-    },
-  ]);
+  defaultSorting,
+}: DataTableProps<TData>) {
+  /** Make the default sorting based on the divine value */
+  const [sorting, setSorting] = useState<SortingState>(defaultSorting ?? []);
 
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
@@ -64,7 +63,25 @@ export function DataTable<TData, TValue>({
     <>
       <div className="flex items-center justify-between py-4">
         <div className="w-full max-w-xs space-y-2">
-          <SearchInput />
+          <div className="relative">
+            <div
+              className="text-muted-foreground pointer-events-none absolute inset-y-0 left-0 flex
+                items-center justify-center pl-3 peer-disabled:opacity-50"
+            >
+              <SearchIcon className="size-4" />
+              <span className="sr-only">Search</span>
+            </div>
+            <Input
+              type="search"
+              placeholder="Search by name"
+              value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+              onChange={(event) => table.getColumn("name")?.setFilterValue(event.target.value)}
+              className="peer px-9 [&::-webkit-search-cancel-button]:appearance-none
+                [&::-webkit-search-decoration]:appearance-none
+                [&::-webkit-search-results-button]:appearance-none
+                [&::-webkit-search-results-decoration]:appearance-none"
+            />
+          </div>
         </div>
         <div className="flex items-center space-x-2">
           <ButtonWrapper

@@ -1,4 +1,4 @@
-import type { CATEGORY_NAMES } from "@/constants/sidebarItems";
+import type { CATEGORY_NAMES_STASH } from "@/constants/sidebarItems";
 import type { Link, LinkComponentProps } from "@tanstack/react-router";
 
 /** Import all the params & responses from the services. */
@@ -44,7 +44,7 @@ export type SidebarSection = {
 
 type SidebarCategory = {
   /** Pass for the names the value not the key since it's missmatching the uppercase with the lower case. */
-  name: (typeof CATEGORY_NAMES)[keyof typeof CATEGORY_NAMES];
+  name: (typeof CATEGORY_NAMES_STASH)[keyof typeof CATEGORY_NAMES_STASH];
   /** Type safety routes from the tanstack router. */
   route: LinkComponentProps<typeof Link>["to"];
   /** URL string for each category. */

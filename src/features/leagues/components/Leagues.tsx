@@ -34,7 +34,7 @@ export function Leagues() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-6 md:gap-8">
           <div className="grid gap-1">
-            <h1 className="text-2xl font-bold tracking-tight">Leagues</h1>
+            <h1 className="text-3xl font-semibold">Leagues</h1>
             <p className="text-muted-foreground my-4">
               Check all the current leaagues that are available.
             </p>
