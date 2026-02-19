@@ -5,6 +5,5 @@ export * from "./FragmentPage";
 export * from "./IncubatorPage";
 export * from "./OilPage";
 export * from "./FossilPage";
-export * from "./ResonatorPage";
 export * from "./BeastPage";
 export * from "./HeistPage";
