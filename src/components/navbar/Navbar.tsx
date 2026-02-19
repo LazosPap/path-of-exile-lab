@@ -70,7 +70,7 @@ const Navbar = ({
   const [searchValue, setSearchValue] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>("");
 
-  const [debouncedSearch] = useDebounce(searchValue, 300);
+  const [debouncedSearch] = useDebounce(searchValue, 500);
 
   const params: GetSearchParams = {
     league: selectedLeague?.name,
@@ -89,6 +89,7 @@ const Navbar = ({
     }),
   );
 
+  /** Create the map for the autocomplete items of the search, to have the same structure. */
   const items = data?.map((item) => ({
     value: item.id,
     label: item.name,
@@ -114,7 +115,7 @@ const Navbar = ({
           </div>
           <AutoComplete
             selectedValue={selectedValue}
-            placeholder="Search items..."
+            placeholder={!selectedLeague ? "Select a league" : "Search items..."}
             onSelectedValueChange={setSelectedValue}
             searchValue={searchValue}
             onSearchValueChange={setSearchValue}
@@ -191,7 +192,7 @@ const Navbar = ({
                   </Accordion>
                   <AutoComplete
                     selectedValue={selectedValue}
-                    placeholder="Search items..."
+                    placeholder={!selectedLeague ? "Select a league" : "Search items..."}
                     onSelectedValueChange={setSelectedValue}
                     searchValue={searchValue}
                     onSearchValueChange={setSearchValue}

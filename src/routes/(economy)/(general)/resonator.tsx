@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(economy)/(general)/resonator')({
+import { ResonatorPage } from "@/features/economy/components";
+
+export const Route = createFileRoute("/(economy)/(general)/resonator")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/(economy)/resonator"!</div>
+  return <ResonatorPage />;
 }

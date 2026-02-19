@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(economy)/(general)/beast')({
+import { BeastPage } from "@/features/economy/components";
+
+export const Route = createFileRoute("/(economy)/(general)/beast")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/(economy)/beast"!</div>
+  return <BeastPage />;
 }

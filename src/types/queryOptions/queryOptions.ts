@@ -23,6 +23,7 @@ export type CategoriesQueryOptionsParams = {
 export type ItemsQueryOptionsParams = {
   endpoint: string;
   queryParams: GetItemsParams;
+  enabled: boolean;
 };
 
 export type ExchangesQueryOptionsParams = {

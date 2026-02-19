@@ -7,8 +7,7 @@ import { Skeleton } from "@/components/shadcn/skeleton";
 import type { ExchangeItem } from "@/types/endpointsServices";
 import type { ColumnDef } from "@tanstack/react-table";
 
-/** @TODO REFACTOR THE COLUMNS SO WE CAN DO LESS HARD TEXT. */
-export const columns: ColumnDef<ExchangeItem>[] = [
+export const exchangeColumns: ColumnDef<ExchangeItem>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
@@ -47,12 +46,10 @@ export const columns: ColumnDef<ExchangeItem>[] = [
       const divine = row.divine;
       const chaos = row.chaos;
 
-      // If divine is base currency (value === 1), use chaos instead
-      if (divine?.value === 1) {
-        return chaos?.divineValue ?? 0;
-      }
-
-      return divine?.divineValue ?? chaos?.divineValue ?? 0;
+      // Return the value we want to display in the table for sorting
+      return divine?.value && divine.value >= 1
+        ? (divine.divineValue ?? 0)
+        : (chaos?.divineValue ?? 0);
     },
     header: ({ column }) => {
       return (
@@ -60,20 +57,19 @@ export const columns: ColumnDef<ExchangeItem>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Value
+          Divine orb
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </ButtonWrapper>
       );
     },
     cell: ({ row }) => {
+      /** Determine the divine values and chaos values for the cell. */
       const divine = row.original.divine;
       const chaos = row.original.chaos;
 
-      const useChaos = divine?.value === 1;
+      const useDivine = divine?.value && divine.value >= 1;
 
-      const value = useChaos
-        ? (chaos?.divineValue ?? 0)
-        : (divine?.divineValue ?? chaos?.divineValue ?? 0);
+      const value = useDivine ? (divine?.divineValue ?? 0) : (chaos?.divineValue ?? 0);
 
       return (
         <div className="flex items-center gap-2">
@@ -94,6 +90,50 @@ export const columns: ColumnDef<ExchangeItem>[] = [
           <Skeleton className="h-4 w-16" />
         </div>
       ),
+    },
+  },
+  {
+    id: "chaosValue",
+    accessorFn: (row: ExchangeItem) => {
+      const divine = row.divine;
+      const chaos = row.chaos;
+
+      // Return the value we want to display in the table for sorting
+      return divine?.value && divine.value >= 1
+        ? (divine.chaosValue ?? 0)
+        : (chaos?.chaosValue ?? 0);
+    },
+    header: ({ column }) => {
+      return (
+        <ButtonWrapper
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Chaos orb
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </ButtonWrapper>
+      );
+    },
+    cell: ({ row }) => {
+      /** Determine the divine values and chaos values for the cell. */
+      const divine = row.original.divine;
+      const chaos = row.original.chaos;
+
+      const useChaos = divine?.value && divine.value >= 1;
+
+      const value = useChaos ? (divine?.chaosValue ?? 0) : (chaos?.chaosValue ?? 0);
+
+      return (
+        <div className="flex items-center gap-2">
+          <div className="flex size-10 w-fit shrink-0 items-center justify-center">
+            <img
+              src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/d119a0d734/CurrencyRerollRare.png"
+              className="h-8 w-8 object-contain"
+            />
+          </div>
+          <span>{value}</span>
+        </div>
+      );
     },
   },
   {
@@ -123,21 +163,20 @@ export const columns: ColumnDef<ExchangeItem>[] = [
       const change =
         divine?.change24H && divine.change24H !== 0 ? divine.change24H : (chaos?.change24H ?? 0);
 
-      const history =
-        divine?.history7D && divine.history7D.length > 0
-          ? divine.history7D
-          : (chaos?.history7D ?? []);
+      const historyNumbers =
+        divine?.history7D?.map((h) => h.meanPrice) ??
+        chaos?.history7D?.map((h) => h.meanPrice) ??
+        [];
 
-      let colorClass = "text-muted-foreground";
+      const colorClass =
+        change > 0 ? "text-green-500" : change < 0 ? "text-red-500" : "text-muted-foreground";
 
-      if (change > 0) colorClass = "text-green-500";
-      if (change < 0) colorClass = "text-red-500";
       return (
         <div>
           <span className={`font-semibold ${colorClass}`}>
             {change > 0 ? `+${change}%` : `${change}%`}
           </span>
-          <MiniChart data={history} />
+          <MiniChart data={historyNumbers.length ? historyNumbers : [0]} />
         </div>
       );
     },

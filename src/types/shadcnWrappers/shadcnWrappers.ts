@@ -20,3 +20,7 @@ export type DropdownMenuAvatarProps = {
   menuLabel?: string;
   contentClassName?: string;
 };
+
+export interface MiniChartProps {
+  data: number[];
+}
