@@ -7,9 +7,7 @@ import {
   type ChartConfig,
 } from "@/components/shadcn/chart";
 
-interface MiniChartProps {
-  data: { date: string; meanPrice: number }[];
-}
+import type { MiniChartProps } from "@/types/shadcnWrappers";
 
 const chartConfig = {
   desktop: {
@@ -19,10 +17,9 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function MiniChart({ data }: MiniChartProps) {
-  const chartData = data?.map((item, index) => ({
+  const chartData = data?.map((value, index) => ({
     index,
-    value: item.meanPrice,
-    date: item.date,
+    value,
   }));
 
   return (

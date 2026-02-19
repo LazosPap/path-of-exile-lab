@@ -13,7 +13,6 @@ import { Route as homeLayoutRouteImport } from './routes/(home)/layout'
 import { Route as economyLayoutRouteImport } from './routes/(economy)/layout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as homeLeaguesRouteImport } from './routes/(home)/leagues'
-import { Route as economygeneralResonatorRouteImport } from './routes/(economy)/(general)/resonator'
 import { Route as economygeneralOilRouteImport } from './routes/(economy)/(general)/oil'
 import { Route as economygeneralIncubatorRouteImport } from './routes/(economy)/(general)/incubator'
 import { Route as economygeneralHeistRouteImport } from './routes/(economy)/(general)/heist'
@@ -53,11 +52,6 @@ const homeLeaguesRoute = homeLeaguesRouteImport.update({
   id: '/leagues',
   path: '/leagues',
   getParentRoute: () => homeLayoutRoute,
-} as any)
-const economygeneralResonatorRoute = economygeneralResonatorRouteImport.update({
-  id: '/(general)/resonator',
-  path: '/resonator',
-  getParentRoute: () => economyLayoutRoute,
 } as any)
 const economygeneralOilRoute = economygeneralOilRouteImport.update({
   id: '/(general)/oil',
@@ -196,7 +190,6 @@ export interface FileRoutesByFullPath {
   '/heist': typeof economygeneralHeistRoute
   '/incubator': typeof economygeneralIncubatorRoute
   '/oil': typeof economygeneralOilRoute
-  '/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -222,7 +215,6 @@ export interface FileRoutesByTo {
   '/heist': typeof economygeneralHeistRoute
   '/incubator': typeof economygeneralIncubatorRoute
   '/oil': typeof economygeneralOilRoute
-  '/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -251,7 +243,6 @@ export interface FileRoutesById {
   '/(economy)/(general)/heist': typeof economygeneralHeistRoute
   '/(economy)/(general)/incubator': typeof economygeneralIncubatorRoute
   '/(economy)/(general)/oil': typeof economygeneralOilRoute
-  '/(economy)/(general)/resonator': typeof economygeneralResonatorRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -279,7 +270,6 @@ export interface FileRouteTypes {
     | '/heist'
     | '/incubator'
     | '/oil'
-    | '/resonator'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -305,7 +295,6 @@ export interface FileRouteTypes {
     | '/heist'
     | '/incubator'
     | '/oil'
-    | '/resonator'
   id:
     | '__root__'
     | '/'
@@ -333,7 +322,6 @@ export interface FileRouteTypes {
     | '/(economy)/(general)/heist'
     | '/(economy)/(general)/incubator'
     | '/(economy)/(general)/oil'
-    | '/(economy)/(general)/resonator'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -371,13 +359,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/leagues'
       preLoaderRoute: typeof homeLeaguesRouteImport
       parentRoute: typeof homeLayoutRoute
-    }
-    '/(economy)/(general)/resonator': {
-      id: '/(economy)/(general)/resonator'
-      path: '/resonator'
-      fullPath: '/resonator'
-      preLoaderRoute: typeof economygeneralResonatorRouteImport
-      parentRoute: typeof economyLayoutRoute
     }
     '/(economy)/(general)/oil': {
       id: '/(economy)/(general)/oil'
@@ -551,7 +532,6 @@ interface economyLayoutRouteChildren {
   economygeneralHeistRoute: typeof economygeneralHeistRoute
   economygeneralIncubatorRoute: typeof economygeneralIncubatorRoute
   economygeneralOilRoute: typeof economygeneralOilRoute
-  economygeneralResonatorRoute: typeof economygeneralResonatorRoute
 }
 
 const economyLayoutRouteChildren: economyLayoutRouteChildren = {
@@ -576,7 +556,6 @@ const economyLayoutRouteChildren: economyLayoutRouteChildren = {
   economygeneralHeistRoute: economygeneralHeistRoute,
   economygeneralIncubatorRoute: economygeneralIncubatorRoute,
   economygeneralOilRoute: economygeneralOilRoute,
-  economygeneralResonatorRoute: economygeneralResonatorRoute,
 }
 
 const economyLayoutRouteWithChildren = economyLayoutRoute._addFileChildren(
