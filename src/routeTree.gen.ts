@@ -32,7 +32,6 @@ import { Route as economyequipment_gemsAccessoryRouteImport } from './routes/(ec
 import { Route as economyatlasUniqueMapRouteImport } from './routes/(economy)/(atlas)/uniqueMap'
 import { Route as economyatlasScarabRouteImport } from './routes/(economy)/(atlas)/scarab'
 import { Route as economyatlasMapRouteImport } from './routes/(economy)/(atlas)/map'
-import { Route as economyatlasInvitationRouteImport } from './routes/(economy)/(atlas)/invitation'
 import { Route as economyatlasDeliriumOrbRouteImport } from './routes/(economy)/(atlas)/deliriumOrb'
 
 const homeLayoutRoute = homeLayoutRouteImport.update({
@@ -155,11 +154,6 @@ const economyatlasMapRoute = economyatlasMapRouteImport.update({
   path: '/map',
   getParentRoute: () => economyLayoutRoute,
 } as any)
-const economyatlasInvitationRoute = economyatlasInvitationRouteImport.update({
-  id: '/(atlas)/invitation',
-  path: '/invitation',
-  getParentRoute: () => economyLayoutRoute,
-} as any)
 const economyatlasDeliriumOrbRoute = economyatlasDeliriumOrbRouteImport.update({
   id: '/(atlas)/deliriumOrb',
   path: '/deliriumOrb',
@@ -170,7 +164,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/leagues': typeof homeLeaguesRoute
   '/deliriumOrb': typeof economyatlasDeliriumOrbRoute
-  '/invitation': typeof economyatlasInvitationRoute
   '/map': typeof economyatlasMapRoute
   '/scarab': typeof economyatlasScarabRoute
   '/uniqueMap': typeof economyatlasUniqueMapRoute
@@ -195,7 +188,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/leagues': typeof homeLeaguesRoute
   '/deliriumOrb': typeof economyatlasDeliriumOrbRoute
-  '/invitation': typeof economyatlasInvitationRoute
   '/map': typeof economyatlasMapRoute
   '/scarab': typeof economyatlasScarabRoute
   '/uniqueMap': typeof economyatlasUniqueMapRoute
@@ -223,7 +215,6 @@ export interface FileRoutesById {
   '/(home)': typeof homeLayoutRouteWithChildren
   '/(home)/leagues': typeof homeLeaguesRoute
   '/(economy)/(atlas)/deliriumOrb': typeof economyatlasDeliriumOrbRoute
-  '/(economy)/(atlas)/invitation': typeof economyatlasInvitationRoute
   '/(economy)/(atlas)/map': typeof economyatlasMapRoute
   '/(economy)/(atlas)/scarab': typeof economyatlasScarabRoute
   '/(economy)/(atlas)/uniqueMap': typeof economyatlasUniqueMapRoute
@@ -250,7 +241,6 @@ export interface FileRouteTypes {
     | '/'
     | '/leagues'
     | '/deliriumOrb'
-    | '/invitation'
     | '/map'
     | '/scarab'
     | '/uniqueMap'
@@ -275,7 +265,6 @@ export interface FileRouteTypes {
     | '/'
     | '/leagues'
     | '/deliriumOrb'
-    | '/invitation'
     | '/map'
     | '/scarab'
     | '/uniqueMap'
@@ -302,7 +291,6 @@ export interface FileRouteTypes {
     | '/(home)'
     | '/(home)/leagues'
     | '/(economy)/(atlas)/deliriumOrb'
-    | '/(economy)/(atlas)/invitation'
     | '/(economy)/(atlas)/map'
     | '/(economy)/(atlas)/scarab'
     | '/(economy)/(atlas)/uniqueMap'
@@ -493,13 +481,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof economyatlasMapRouteImport
       parentRoute: typeof economyLayoutRoute
     }
-    '/(economy)/(atlas)/invitation': {
-      id: '/(economy)/(atlas)/invitation'
-      path: '/invitation'
-      fullPath: '/invitation'
-      preLoaderRoute: typeof economyatlasInvitationRouteImport
-      parentRoute: typeof economyLayoutRoute
-    }
     '/(economy)/(atlas)/deliriumOrb': {
       id: '/(economy)/(atlas)/deliriumOrb'
       path: '/deliriumOrb'
@@ -512,7 +493,6 @@ declare module '@tanstack/react-router' {
 
 interface economyLayoutRouteChildren {
   economyatlasDeliriumOrbRoute: typeof economyatlasDeliriumOrbRoute
-  economyatlasInvitationRoute: typeof economyatlasInvitationRoute
   economyatlasMapRoute: typeof economyatlasMapRoute
   economyatlasScarabRoute: typeof economyatlasScarabRoute
   economyatlasUniqueMapRoute: typeof economyatlasUniqueMapRoute
@@ -536,7 +516,6 @@ interface economyLayoutRouteChildren {
 
 const economyLayoutRouteChildren: economyLayoutRouteChildren = {
   economyatlasDeliriumOrbRoute: economyatlasDeliriumOrbRoute,
-  economyatlasInvitationRoute: economyatlasInvitationRoute,
   economyatlasMapRoute: economyatlasMapRoute,
   economyatlasScarabRoute: economyatlasScarabRoute,
   economyatlasUniqueMapRoute: economyatlasUniqueMapRoute,
