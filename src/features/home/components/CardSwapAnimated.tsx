@@ -1,4 +1,9 @@
-import { ContainerImage, Leagues } from "@/assets/images";
+import {
+  CurrencyOverview,
+  LeaguesOverview,
+  AccessoriesOverview,
+  ScarabsOverview,
+} from "@/assets/images";
 import CardSwap, { Card } from "@/components/motion/CardSwap";
 
 export function CardSwapAnimated() {
@@ -20,7 +25,7 @@ export function CardSwapAnimated() {
           <img
             height={720}
             width={1400}
-            src={ContainerImage}
+            src={CurrencyOverview}
             className="mx-auto h-full object-cover object-top-left"
           />
         </Card>
@@ -28,7 +33,7 @@ export function CardSwapAnimated() {
           <img
             height={720}
             width={1400}
-            src={Leagues}
+            src={AccessoriesOverview}
             className="mx-auto h-full object-cover object-top-left"
           />
         </Card>
@@ -36,7 +41,15 @@ export function CardSwapAnimated() {
           <img
             height={720}
             width={1400}
-            src={ContainerImage}
+            src={ScarabsOverview}
+            className="mx-auto h-full object-cover object-top-left"
+          />
+        </Card>
+        <Card className="flex items-center justify-center overflow-hidden shadow-md">
+          <img
+            height={720}
+            width={1400}
+            src={LeaguesOverview}
             className="mx-auto h-full object-cover object-top-left"
           />
         </Card>
