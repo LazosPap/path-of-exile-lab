@@ -15,21 +15,25 @@ export function EntityPage({ entityKey }: PageEntityProps) {
 
   const { selectedLeague } = useLeagues();
 
-  const [selectedMode, setSelectedMode] = useState<ModeType>("EXCHANGE");
-
   /** Type the MODES since we are missing on some categories the exchange and keep the type safety. */
   const typedModes = MODES as Record<ModeType, ModesConfig>;
 
-  const activeMode = typedModes[selectedMode];
-
   const stashMode = typedModes.STASH;
   const exchangeMode = typedModes.EXCHANGE;
+
+  /** Check the exchange ratio endpoint since not all the categories support it. */
+  const hasExchangeRatio = !!typedModes.EXCHANGE;
+
+  const defaultMode: ModeType = hasExchangeRatio ? "EXCHANGE" : "STASH";
+  const [selectedMode, setSelectedMode] = useState<ModeType>(defaultMode);
+
+  const activeMode = typedModes[selectedMode];
 
   const [stashQuery, exchangeQuery] = useQueries({
     queries: [
       {
         ...getItemsQueryOptions({
-          endpoint: stashMode.ENDPOINT,
+          endpoint: stashMode?.ENDPOINT,
           queryParams: {
             league: selectedLeague?.name,
             category: MODES.STASH.FILTER_CATEGORY,
@@ -40,7 +44,7 @@ export function EntityPage({ entityKey }: PageEntityProps) {
       },
       {
         ...getExchangesQueryOptions({
-          endpoint: exchangeMode.ENDPOINT,
+          endpoint: exchangeMode?.ENDPOINT,
           queryParams: {
             league: selectedLeague?.name,
             game: "poe1",
@@ -57,18 +61,22 @@ export function EntityPage({ entityKey }: PageEntityProps) {
     ?.filter((item) => !item.divine?.lowConfidence);
 
   return (
-    <div className="container mx-auto w-2/3 py-10">
+    <div className="mx-auto w-full max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-semibold">{TITLE}</h1>
       <div className="flex items-center space-x-2 py-6">
-        <Switch
-          disabled={!selectedLeague?.name}
-          checked={selectedMode === "EXCHANGE"}
-          onCheckedChange={(checked) => setSelectedMode(checked ? "EXCHANGE" : "STASH")}
-          aria-label="Switch exchange to stash"
-          size="lg"
-          id="large-switch"
-        />
-        <Label htmlFor="large-switch">{selectedMode}</Label>
+        {hasExchangeRatio && (
+          <div>
+            <Switch
+              disabled={!selectedLeague?.name}
+              checked={selectedMode === "EXCHANGE"}
+              onCheckedChange={(checked) => setSelectedMode(checked ? "EXCHANGE" : "STASH")}
+              aria-label="Switch exchange to stash"
+              size="lg"
+              id="large-switch"
+            />
+            <Label htmlFor="large-switch">{selectedMode}</Label>
+          </div>
+        )}
       </div>
       {selectedMode === "EXCHANGE" ? (
         <DataTable

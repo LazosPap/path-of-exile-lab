@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(economy)/(atlas)/uniqueMap')({
+import { EntityPage } from "@/components/entity";
+
+export const Route = createFileRoute("/(economy)/(atlas)/uniqueMap")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/(economy)/uniqueMap"!</div>
+  return <EntityPage entityKey="UNIQUE_MAPS" />;
 }

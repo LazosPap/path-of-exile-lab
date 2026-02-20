@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(economy)/(equipment_gems)/bases')({
+import { EntityPage } from "@/components/entity";
+
+export const Route = createFileRoute("/(economy)/(equipment_gems)/bases")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/(economy)/bases"!</div>
+  return <EntityPage entityKey="CRAFTING_BASES" />;
 }

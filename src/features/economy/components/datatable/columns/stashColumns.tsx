@@ -3,6 +3,7 @@ import { ArrowUpDown } from "lucide-react";
 import ButtonWrapper from "@/components/button/ButtonWrapper";
 import MiniChart from "@/components/charts/MiniChart";
 import { Skeleton } from "@/components/shadcn/skeleton";
+import { CURRENCY_IMAGES_URLS } from "@/constants/imagesUrls";
 
 import type { Item } from "@/types/endpointsServices";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -60,10 +61,7 @@ export const stashColumns: ColumnDef<Item>[] = [
       return (
         <div className="flex items-center gap-2">
           <div className="flex size-10 w-fit shrink-0 items-center justify-center">
-            <img
-              src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lNb2RWYWx1ZXMiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/e1a54ff97d/CurrencyModValues.png"
-              className="h-8 w-8 object-contain"
-            />
+            <img src={CURRENCY_IMAGES_URLS.DIVINE} className="h-8 w-8 object-contain" />
           </div>
           <span>{divine}</span>
         </div>
@@ -96,10 +94,7 @@ export const stashColumns: ColumnDef<Item>[] = [
       return (
         <div className="flex items-center gap-2">
           <div className="flex size-10 w-fit shrink-0 items-center justify-center">
-            <img
-              src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lSZXJvbGxSYXJlIiwidyI6MSwiaCI6MSwic2NhbGUiOjF9XQ/d119a0d734/CurrencyRerollRare.png"
-              className="h-8 w-8 object-contain"
-            />
+            <img src={CURRENCY_IMAGES_URLS.CHAOS} className="h-8 w-8 object-contain" />
           </div>
           <span>{mean}</span>
         </div>
@@ -128,9 +123,13 @@ export const stashColumns: ColumnDef<Item>[] = [
       if (change < 0) colorClass = "text-red-500";
       return (
         <div>
-          <span className={`font-semibold ${colorClass}`}>
-            {change > 0 ? `+${change}%` : `${change}%`}
-          </span>
+          <div className="flex gap-2">
+            <span className={`font-semibold ${colorClass}`}>
+              {change > 0 ? `+${change}%` : `${change}%`}
+            </span>
+            <img src={CURRENCY_IMAGES_URLS.CHAOS} className="h-6 w-6 object-contain" />
+          </div>
+
           <MiniChart data={row.original.history} />
         </div>
       );

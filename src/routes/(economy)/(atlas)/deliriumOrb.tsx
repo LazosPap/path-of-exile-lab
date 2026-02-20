@@ -1,9 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/(economy)/(atlas)/deliriumOrb')({
+import { EntityPage } from "@/components/entity";
+
+export const Route = createFileRoute("/(economy)/(atlas)/deliriumOrb")({
   component: RouteComponent,
-})
+});
 
 function RouteComponent() {
-  return <div>Hello "/(economy)/deliriumOrb"!</div>
+  return <EntityPage entityKey="DELIRIUM_ORBS" />;
 }
