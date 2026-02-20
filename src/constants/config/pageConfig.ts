@@ -5,6 +5,7 @@ import type { EntityPageConfig } from "@/types/config";
 
 /** @TODO UPDATE THE UNDEFINED ROUTES. */
 export const PAGE_CONFIG = {
+  /** @GENERAL */
   CURRENCY: {
     TITLE: "Currency",
     MODES: {
@@ -99,10 +100,6 @@ export const PAGE_CONFIG = {
         ENDPOINT: ITEMS_ENDPOINTS.GET,
         FILTER_CATEGORY: CATEGORY_NAMES_STASH.BEAST,
       },
-      EXCHANGE: {
-        ENDPOINT: EXCHANGE_ENDPOINTS.EXCHANGES_RATIOS,
-        FILTER_CATEGORY: CATEGORY_NAMES_EXCHANGE.HEIST,
-      },
     },
   },
   HEIST: {
@@ -115,6 +112,115 @@ export const PAGE_CONFIG = {
       EXCHANGE: {
         ENDPOINT: EXCHANGE_ENDPOINTS.EXCHANGES_RATIOS,
         FILTER_CATEGORY: CATEGORY_NAMES_EXCHANGE.HEIST,
+      },
+    },
+  },
+  /** @EQUIPMENT & GEMS */
+  ARMOUR: {
+    TITLE: "Armour",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.ARMOUR,
+      },
+    },
+  },
+  WEAPONS: {
+    TITLE: "Weapons",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.WEAPON,
+      },
+    },
+  },
+  GEMS: {
+    TITLE: "Gems",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.GEM,
+      },
+    },
+  },
+  ACCESSORIES: {
+    TITLE: "Accessories",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.ACCESSORY,
+      },
+    },
+  },
+  CRAFTING_BASES: {
+    TITLE: "Crafting Bases",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.BASES,
+      },
+    },
+  },
+  JEWELS: {
+    TITLE: "Jewels",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.JEWEL,
+      },
+    },
+  },
+  FLASKS: {
+    TITLE: "Flasks",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.FLASK,
+      },
+    },
+  },
+  /** @ATLAS */
+  MAPS: {
+    TITLE: "Maps",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.MAP,
+      },
+    },
+  },
+  UNIQUE_MAPS: {
+    TITLE: "Unique Maps",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.UNIQUE_MAP,
+      },
+    },
+  },
+  SCARABS: {
+    TITLE: "Scarabs",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.SCARAB,
+      },
+      EXCHANGE: {
+        ENDPOINT: EXCHANGE_ENDPOINTS.EXCHANGES_RATIOS,
+        FILTER_CATEGORY: CATEGORY_NAMES_EXCHANGE.SCARAB,
+      },
+    },
+  },
+  DELIRIUM_ORBS: {
+    TITLE: "Delirium Orbs",
+    MODES: {
+      STASH: {
+        ENDPOINT: ITEMS_ENDPOINTS.GET,
+        FILTER_CATEGORY: CATEGORY_NAMES_STASH.DELIRIUM_ORB,
+      },
+      EXCHANGE: {
+        ENDPOINT: EXCHANGE_ENDPOINTS.EXCHANGES_RATIOS,
+        FILTER_CATEGORY: CATEGORY_NAMES_EXCHANGE.DELIRIUM,
       },
     },
   },
