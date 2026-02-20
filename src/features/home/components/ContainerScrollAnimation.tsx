@@ -1,4 +1,4 @@
-import { ContainerImage } from "@/assets/images";
+import { CurrencyOverview } from "@/assets/images";
 import { ContainerScroll } from "@/components/shadcn/container-scroll-animation";
 
 export function ContainerScrollAnimation() {
@@ -17,7 +17,7 @@ export function ContainerScrollAnimation() {
         }
       >
         <img
-          src={ContainerImage}
+          src={CurrencyOverview}
           alt="hero"
           height={720}
           width={1400}

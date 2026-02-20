@@ -1,4 +1,4 @@
-import { ContainerImage, LeagueBanner } from "@/assets/images";
+import { CurrencyOverview, LeagueBanner } from "@/assets/images";
 import { Tabs } from "@/features/home/components/Tabs";
 
 export function AnimatedTabs() {
@@ -13,7 +13,7 @@ export function AnimatedTabs() {
         >
           <p>Currency Overview</p>
           <img
-            src={ContainerImage}
+            src={CurrencyOverview}
             alt="dummy image"
             width="1000"
             height="1000"
