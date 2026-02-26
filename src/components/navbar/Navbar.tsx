@@ -40,7 +40,7 @@ import { useLeagues } from "@/hooks/leagues";
 import { cn } from "@/lib/utils";
 import { getSearchQueryOptions } from "@/queries/search";
 
-import type { GetSearchParams } from "@/types/endpointsServices";
+import type { GetSearchParams, SearchItems } from "@/types/endpointsServices";
 import type { MenuItem, NavbarProps } from "@/types/navbar";
 
 const Navbar = ({
@@ -90,11 +90,14 @@ const Navbar = ({
   );
 
   /** Create the map for the autocomplete items of the search, to have the same structure. */
-  const items = data?.map((item) => ({
-    value: item.id,
-    label: item.name,
-    icon: item.icon,
-  }));
+  const items =
+    data?.map((item: SearchItems) => ({
+      id: item.id,
+      value: item.name,
+      label: item.name,
+      category: item.category,
+      icon: item.icon,
+    })) ?? [];
 
   return (
     <section className={cn("py-4", className)}>
@@ -119,7 +122,7 @@ const Navbar = ({
             onSelectedValueChange={setSelectedValue}
             searchValue={searchValue}
             onSearchValueChange={setSearchValue}
-            items={items ?? []}
+            items={items}
             isLoading={isLoading}
             isFetching={searchFetching}
             disabled={!selectedLeague}

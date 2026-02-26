@@ -13,6 +13,7 @@ import { Route as homeLayoutRouteImport } from './routes/(home)/layout'
 import { Route as economyLayoutRouteImport } from './routes/(economy)/layout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as homeLeaguesRouteImport } from './routes/(home)/leagues'
+import { Route as homeCategoryItemNameRouteImport } from './routes/(home)/$category/$itemName'
 import { Route as economygeneralOilRouteImport } from './routes/(economy)/(general)/oil'
 import { Route as economygeneralIncubatorRouteImport } from './routes/(economy)/(general)/incubator'
 import { Route as economygeneralHeistRouteImport } from './routes/(economy)/(general)/heist'
@@ -50,6 +51,11 @@ const IndexRoute = IndexRouteImport.update({
 const homeLeaguesRoute = homeLeaguesRouteImport.update({
   id: '/leagues',
   path: '/leagues',
+  getParentRoute: () => homeLayoutRoute,
+} as any)
+const homeCategoryItemNameRoute = homeCategoryItemNameRouteImport.update({
+  id: '/$category/$itemName',
+  path: '/$category/$itemName',
   getParentRoute: () => homeLayoutRoute,
 } as any)
 const economygeneralOilRoute = economygeneralOilRouteImport.update({
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/heist': typeof economygeneralHeistRoute
   '/incubator': typeof economygeneralIncubatorRoute
   '/oil': typeof economygeneralOilRoute
+  '/$category/$itemName': typeof homeCategoryItemNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -207,6 +214,7 @@ export interface FileRoutesByTo {
   '/heist': typeof economygeneralHeistRoute
   '/incubator': typeof economygeneralIncubatorRoute
   '/oil': typeof economygeneralOilRoute
+  '/$category/$itemName': typeof homeCategoryItemNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/(economy)/(general)/heist': typeof economygeneralHeistRoute
   '/(economy)/(general)/incubator': typeof economygeneralIncubatorRoute
   '/(economy)/(general)/oil': typeof economygeneralOilRoute
+  '/(home)/$category/$itemName': typeof homeCategoryItemNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -260,6 +269,7 @@ export interface FileRouteTypes {
     | '/heist'
     | '/incubator'
     | '/oil'
+    | '/$category/$itemName'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/heist'
     | '/incubator'
     | '/oil'
+    | '/$category/$itemName'
   id:
     | '__root__'
     | '/'
@@ -310,6 +321,7 @@ export interface FileRouteTypes {
     | '/(economy)/(general)/heist'
     | '/(economy)/(general)/incubator'
     | '/(economy)/(general)/oil'
+    | '/(home)/$category/$itemName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -346,6 +358,13 @@ declare module '@tanstack/react-router' {
       path: '/leagues'
       fullPath: '/leagues'
       preLoaderRoute: typeof homeLeaguesRouteImport
+      parentRoute: typeof homeLayoutRoute
+    }
+    '/(home)/$category/$itemName': {
+      id: '/(home)/$category/$itemName'
+      path: '/$category/$itemName'
+      fullPath: '/$category/$itemName'
+      preLoaderRoute: typeof homeCategoryItemNameRouteImport
       parentRoute: typeof homeLayoutRoute
     }
     '/(economy)/(general)/oil': {
@@ -543,10 +562,12 @@ const economyLayoutRouteWithChildren = economyLayoutRoute._addFileChildren(
 
 interface homeLayoutRouteChildren {
   homeLeaguesRoute: typeof homeLeaguesRoute
+  homeCategoryItemNameRoute: typeof homeCategoryItemNameRoute
 }
 
 const homeLayoutRouteChildren: homeLayoutRouteChildren = {
   homeLeaguesRoute: homeLeaguesRoute,
+  homeCategoryItemNameRoute: homeCategoryItemNameRoute,
 }
 
 const homeLayoutRouteWithChildren = homeLayoutRoute._addFileChildren(

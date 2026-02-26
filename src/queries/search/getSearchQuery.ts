@@ -2,7 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 
 import { getSearch } from "@/services/poeService/search";
 
-import type { GetSearchParams, SearchItem } from "@/types/endpointsServices";
+import type { GetSearchParams, SearchItems } from "@/types/endpointsServices";
 import type { SearchQueryOptionsParams } from "@/types/queryOptions";
 
 /** Query key factory. */
@@ -21,9 +21,9 @@ export function getSearchQueryOptions({
   queryParams,
   enabled,
 }: SearchQueryOptionsParams) {
-  return queryOptions<SearchItem[]>({
+  return queryOptions<SearchItems[]>({
     queryKey: searchKeys.search(endpoint, queryParams),
-    queryFn: () => getSearch<SearchItem[]>({ endpoint, queryParams }),
+    queryFn: () => getSearch<SearchItems[]>({ endpoint, queryParams }),
     placeholderData: (prev) => prev,
     enabled,
   });
