@@ -16,3 +16,14 @@ export interface TiltedCardProps {
   displayOverlayContent?: boolean;
   displayOverlayContentBottom?: boolean;
 }
+
+/** Path of exile item border based on the rarity and type. */
+export interface ItemCardProps {
+  name: string;
+  imageUrl: string;
+  rarity?: "unique" | "rare" | "magic" | "normal";
+  implicit?: string[];
+  explicit?: string[];
+  mutated?: string[];
+  flavorText?: string;
+}

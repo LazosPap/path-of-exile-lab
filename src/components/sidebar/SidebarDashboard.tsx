@@ -30,7 +30,7 @@ export function SidebarDashboard({ children }: SidebarDashboardProps) {
         <SidebarHeader>
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild>
+              <SidebarMenuButton className="hover:bg-accent" size="lg" asChild>
                 <Link to="/">
                   <div
                     className="text-primary-foreground flex aspect-square size-12 items-center

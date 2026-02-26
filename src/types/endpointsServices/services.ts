@@ -29,12 +29,35 @@ export type League = {
   start_date: string;
   end_date: string;
 };
-
-export type SearchItem = {
-  id: string;
-  icon: string;
+export interface SearchItems {
+  id: number;
   name: string;
-};
+  category: string;
+  group: string;
+  frame: number;
+  influences: null;
+  linkCount: number;
+  icon: string;
+  mean: number;
+  min: number;
+  max: number;
+  exalted: number;
+  daily: number;
+  change: number;
+  history: number[];
+  lowConfidence: boolean;
+  perfectPrice: number;
+  perfectAmount: number;
+  implicits: string[];
+  explicits: string[];
+  gemLevel: number;
+  gemQuality: number;
+  gemIsCorrupted: boolean;
+  essenceTier: number;
+  watchstonesUses: number;
+  mapSeries: number;
+  mapTier: number;
+}
 
 /** Type for the const sidebar. */
 export type SidebarSection = {
