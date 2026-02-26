@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Command as CommandPrimitive } from "cmdk";
 import { Check } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -13,26 +14,10 @@ import {
 import { Input } from "@/components/shadcn/input";
 import { Popover, PopoverAnchor, PopoverContent } from "@/components/shadcn/popover";
 import { Skeleton } from "@/components/shadcn/skeleton";
+import { toSlug } from "@/lib/slug";
 import { cn } from "@/lib/utils";
 
-type AutoCompleteItem<T extends string> = {
-  value: T;
-  label: string;
-  icon?: string;
-};
-
-type Props<T extends string> = {
-  selectedValue: T;
-  onSelectedValueChange: (value: T) => void;
-  searchValue: string;
-  onSearchValueChange: (value: string) => void;
-  items: AutoCompleteItem<T>[];
-  isLoading?: boolean;
-  isFetching?: boolean;
-  disabled?: boolean;
-  emptyMessage?: string;
-  placeholder?: string;
-};
+import type { AutoCompleteProps } from "@/types/inputs";
 
 export function AutoComplete<T extends string>({
   selectedValue,
@@ -45,7 +30,7 @@ export function AutoComplete<T extends string>({
   emptyMessage = "No items.",
   placeholder = "Search...",
   disabled,
-}: Props<T>) {
+}: AutoCompleteProps<T>) {
   const [open, setOpen] = useState(false);
 
   const labels = useMemo(
@@ -59,7 +44,6 @@ export function AutoComplete<T extends string>({
       ),
     [items],
   );
-
   const reset = () => {
     onSelectedValueChange("" as T);
     onSearchValueChange("");
@@ -80,7 +64,6 @@ export function AutoComplete<T extends string>({
     }
     setOpen(false);
   };
-
   return (
     <div className="flex w-full items-center md:w-1/3 lg:w-1/3">
       <Popover open={open} onOpenChange={setOpen}>
@@ -121,27 +104,39 @@ export function AutoComplete<T extends string>({
                 <CommandGroup>
                   {isFetching && <LoadingSpinner />}
                   {items.map((option) => (
-                    <CommandItem
-                      key={option.value}
-                      value={option.value}
-                      onMouseDown={(e) => e.preventDefault()}
-                      onSelect={onSelectItem}
+                    <Link
+                      to="/$category/$itemName"
+                      params={{
+                        category: option.category,
+                        itemName: toSlug(option.label),
+                      }}
+                      search={{
+                        id: option.id,
+                        name: option.label,
+                      }}
                     >
-                      {option.icon && (
-                        <img
-                          className="h-14 w-14 object-contain"
-                          src={option.icon}
-                          alt={option.label}
-                        />
-                      )}
-                      <Check
-                        className={cn(
-                          "mr-2 h-4 w-4",
-                          selectedValue === option.value ? "opacity-100" : "opacity-0",
+                      <CommandItem
+                        key={option.value}
+                        value={option.value}
+                        onMouseDown={(e) => e.preventDefault()}
+                        onSelect={onSelectItem}
+                      >
+                        {option.icon && (
+                          <img
+                            className="h-14 w-14 object-contain"
+                            src={option.icon}
+                            alt={option.label}
+                          />
                         )}
-                      />
-                      {option.label}
-                    </CommandItem>
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            selectedValue === option.value ? "opacity-100" : "opacity-0",
+                          )}
+                        />
+                        {option.label}
+                      </CommandItem>
+                    </Link>
                   ))}
                 </CommandGroup>
               ) : null}

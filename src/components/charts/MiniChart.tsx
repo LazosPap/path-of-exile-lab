@@ -16,7 +16,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function MiniChart({ data }: MiniChartProps) {
+export function MiniChart({ data }: MiniChartProps) {
   const chartData = data?.map((value, index) => ({
     index,
     value,

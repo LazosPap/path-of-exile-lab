@@ -1,9 +1,11 @@
+import { Link } from "@tanstack/react-router";
 import { ArrowUpDown } from "lucide-react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
-import MiniChart from "@/components/charts/MiniChart";
+import { MiniChart } from "@/components/charts";
 import { Skeleton } from "@/components/shadcn/skeleton";
 import { CURRENCY_IMAGES_URLS } from "@/constants/imagesUrls";
+import { toSlug } from "@/lib/slug";
 
 import type { ExchangeItem } from "@/types/endpointsServices";
 import type { ColumnDef } from "@tanstack/react-table";
@@ -24,12 +26,24 @@ export const exchangeColumns: ColumnDef<ExchangeItem>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="flex items-center gap-2">
-          <div className="flex size-10 w-fit shrink-0 items-center justify-center">
-            <img src={row.original.icon} className="h-10 w-10 object-contain" />
+        <Link
+          to="/$category/$itemName"
+          params={{
+            category: row.original.category,
+            itemName: toSlug(row.original.name),
+          }}
+          search={{
+            id: row.original.id,
+            name: row.original.name,
+          }}
+        >
+          <div className="flex items-center gap-2">
+            <div className="flex size-10 w-fit shrink-0 items-center justify-center">
+              <img src={row.original.icon} className="h-10 w-10 object-contain" />
+            </div>
+            <span>{row.original.name}</span>
           </div>
-          <span>{row.original.name}</span>
-        </div>
+        </Link>
       );
     },
     meta: {
