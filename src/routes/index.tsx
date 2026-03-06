@@ -32,7 +32,9 @@ function Index() {
       </AnimatedDiv>
 
       <AnimatedDiv>
-        <CardSwapAnimated />
+        <div className="overflow-hidden">
+          <CardSwapAnimated />
+        </div>
       </AnimatedDiv>
     </HomeLayout>
   );
