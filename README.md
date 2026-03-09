@@ -6,12 +6,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![GitHub forks](https://img.shields.io/github/forks/LazosPap/path-of-exile-lab?style=for-the-badge)](https://github.com/LazosPap/path-of-exile-lab/network)
+[![GitHub stars](https://img.shields.io/github/stars/LazosPap/path-of-exile-lab?style=for-the-badge)](https://github.com/LazosPap/path-of-exile-lab/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/LazosPap/path-of-exile-lab?style=for-the-badge)](https://github.com/LazosPap/path-of-exile-lab/issues)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-green?style=for-the-badge)](https://poemarket.vercel.app/)
+[![License](https://img.shields.io/github/license/LazosPap/path-of-exile-lab?style=for-the-badge)](LICENSE)
 
 
 
@@ -27,14 +26,14 @@
   <p align="center">
     An awesome README template to jumpstart your projects!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LazosPap/path-of-exile-lab"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://poemarket.vercel.app/">View Application</a>
     &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/LazosPap/path-of-exile-lab/issues/new">Report Bug</a>
     &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://github.com/LazosPap/path-of-exile-lab/issues/new">Request Feature</a>
   </p>
 </div>
 
@@ -50,19 +49,9 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -75,9 +64,11 @@
 
 Path of Exile Lab is a web application that displays real-time Path of Exile market and laboratory related data using the **poe.watch API**.
 
-The goal of the project is to provide an easy way to explore Path of Exile economy data such as item prices, currencies, and lab related information through a clean and interactive interface.
+The goal of the project is to provide an easy way to explore Path of Exile economy data such as item prices and currencies related information through a clean and interactive interface.
 
 The application fetches data from a third-party API and visualizes it in a simple UI built with React.
+
+It shows for each available league that is currently running the price history of each league.
 
 ### Features
 
@@ -89,14 +80,27 @@ The application fetches data from a third-party API and visualizes it in a simpl
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### API
 
+This project uses the **poe.watch API** as a third-party data source for Path of Exile market information.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+#### Core Stack
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript)
 
-* [![React][React.js]][React-url]
+#### Styling & UI
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![shadcn/ui](https://img.shields.io/badge/shadcn/ui-black?style=for-the-badge)
 
+#### Routing & Data Management
+![TanStack Router](https://img.shields.io/badge/TanStack_Router-FF4154?style=for-the-badge)
+![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge)
+
+#### API Integration
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge)
+![poe.watch API](https://img.shields.io/badge/poe.watch-API-orange?style=for-the-badge)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,7 +108,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Landing Page
+### Landing Section 2
 <img src="src/assets/images/Item_price.png">
 
 ### Application Overview
@@ -122,6 +126,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 ### Currency Overview
 <img src="src/assets/images/Currency_overview.png" width="800" height="800">
 
+### Item Overview
+<img src="src/assets/images/Item_overview.png" width="800" height="800">
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
@@ -132,13 +139,38 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - lazospap3@gmail.com
+Lazaros Papounidis - lazospap3@gmail.com
 
 Project Link: [https://github.com/LazosPap/path-of-exile-lab](https://github.com/LazosPap/path-of-exile-lab)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- TECHNOLOGY BADGES -->
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+
+[TypeScript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+
+[TailwindCSS]: https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[TailwindCSS-url]: https://tailwindcss.com/
+
+[TanStackQuery]: https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white
+[TanStackQuery-url]: https://tanstack.com/query/latest
+
+[TanStackRouter]: https://img.shields.io/badge/TanStack_Router-FF4154?style=for-the-badge
+[TanStackRouter-url]: https://tanstack.com/router/latest
+
+[Axios]: https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white
+[Axios-url]: https://axios-http.com/
+
+[shadcn]: https://img.shields.io/badge/shadcn/ui-000000?style=for-the-badge
+[shadcn-url]: https://ui.shadcn.com/
+
+[Vite]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
+[Vite-url]: https://vitejs.dev/
