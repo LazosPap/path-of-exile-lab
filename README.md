@@ -104,11 +104,20 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Dashboard
-<img src="https://media.licdn.com/dms/image/v2/D4D2DAQFrmDBrl43Amw/profile-treasury-image-shrink_800_800/B4DZx7rJacIwAY-/0/1771601435165?e=1773662400&v=beta&t=0ag5NdEt4Cuew-o77AYX40MsIjvmRWb31JfcKXSqWeM" width="800">
+### Landing Page
+<img src="src/assets/images/Item_price.png">
+
+### Application Overview
+<img src="src/assets/images/Application_overview.png" width="800" height="800">
+
+### Search Results
+<img src="src/assets/images/Search_overview.png" width="800" height="800">
 
 ### Leagues
 <img src="https://media.licdn.com/dms/image/v2/D4D2DAQHRnLoz7xoyBA/profile-treasury-image-shrink_800_800/B4DZx7raEKJoAY-/0/1771601503779?e=1773662400&v=beta&t=pO68VDeXsu9ETVOSCslldSW3LpwOD1VI13Xh2t5Izjw" width="800">
+
+### Dashboard
+<img src="https://media.licdn.com/dms/image/v2/D4D2DAQFrmDBrl43Amw/profile-treasury-image-shrink_800_800/B4DZx7rJacIwAY-/0/1771601435165?e=1773662400&v=beta&t=0ag5NdEt4Cuew-o77AYX40MsIjvmRWb31JfcKXSqWeM" width="800">
 
 ### Currency Overview
 <img src="src/assets/images/Currency_overview.png" width="800" height="800">
