@@ -1,1 +1,1 @@
-export * from "./MiniChart";
+export * from "./ChartGraph";

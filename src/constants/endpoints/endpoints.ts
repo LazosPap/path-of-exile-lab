@@ -24,3 +24,7 @@ export const ITEMS_ENDPOINTS = {
 export const EXCHANGE_ENDPOINTS = {
   EXCHANGES_RATIOS: "/exchange/ratios",
 };
+
+export const HISTORY_ENDPOINTS = {
+  HISTORY: "/history",
+};

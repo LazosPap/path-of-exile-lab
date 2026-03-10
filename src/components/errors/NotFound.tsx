@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
+import { CURRENCY_IMAGES_URLS } from "@/constants/imagesUrls";
 
 export function NotFound() {
   return (
@@ -20,7 +21,7 @@ export function NotFound() {
       <div className="relative max-h-screen w-full p-2 max-lg:hidden">
         <div className="bg-secondary/50 h-full w-full rounded-2xl"></div>
         <img
-          src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7111e35254/CurrencyDuplicate.png"
+          src={CURRENCY_IMAGES_URLS.DIVINE}
           alt="404 illustration"
           className="absolute top-1/2 left-1/2 h-32 -translate-x-1/2 -translate-y-1/2"
         />

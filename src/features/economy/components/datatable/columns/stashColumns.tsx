@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpDown } from "lucide-react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
-import { MiniChart } from "@/components/charts";
+import { ChartGraph } from "@/components/charts";
 import { Skeleton } from "@/components/shadcn/skeleton";
 import { CURRENCY_IMAGES_URLS } from "@/constants/imagesUrls";
 import { toSlug } from "@/lib/slug";
@@ -135,6 +135,12 @@ export const stashColumns: ColumnDef<Item>[] = [
 
       if (change > 0) colorClass = "text-green-500";
       if (change < 0) colorClass = "text-red-500";
+
+      const chartData = row.original.history?.map((value, index) => ({
+        index,
+        value,
+      }));
+      
       return (
         <div>
           <div className="flex gap-2">
@@ -144,7 +150,7 @@ export const stashColumns: ColumnDef<Item>[] = [
             <img src={CURRENCY_IMAGES_URLS.CHAOS} className="h-6 w-6 object-contain" />
           </div>
 
-          <MiniChart data={row.original.history} />
+          <ChartGraph data={chartData} className="w-32 h-16" showTooltip />
         </div>
       );
     },

@@ -2,6 +2,7 @@
 
 import type {
   GetExchangeRatiosParams,
+  GetItemDetailsParams,
   GetItemsParams,
   GetSearchParams,
 } from "@/types/endpointsServices";
@@ -14,6 +15,11 @@ export type SearchQueryOptionsParams = {
   endpoint: string;
   queryParams: GetSearchParams;
   enabled: boolean;
+};
+
+export type ItemDetailsOptionsParams = {
+  endpoint: string;
+  queryParams: GetItemDetailsParams;
 };
 
 export type CategoriesQueryOptionsParams = {
