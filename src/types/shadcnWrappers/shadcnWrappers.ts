@@ -21,6 +21,13 @@ export type DropdownMenuAvatarProps = {
   contentClassName?: string;
 };
 
-export interface MiniChartProps {
-  data: number[];
+export interface GraphChartProps<T> {
+  data?: T[];
+  xKey?: string;
+  yKey?: string;
+  color?: string;
+  xAxis?: boolean;
+  yAxis?: boolean;
+  showTooltip?: boolean;
+  className?: string;
 }

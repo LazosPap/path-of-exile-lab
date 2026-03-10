@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpDown } from "lucide-react";
 
 import ButtonWrapper from "@/components/button/ButtonWrapper";
-import { MiniChart } from "@/components/charts";
+import { ChartGraph } from "@/components/charts";
 import { Skeleton } from "@/components/shadcn/skeleton";
 import { CURRENCY_IMAGES_URLS } from "@/constants/imagesUrls";
 import { toSlug } from "@/lib/slug";
@@ -180,6 +180,11 @@ export const exchangeColumns: ColumnDef<ExchangeItem>[] = [
       const colorClass =
         change > 0 ? "text-green-500" : change < 0 ? "text-red-500" : "text-muted-foreground";
 
+      const chartData = historyNumbers?.map((value, index) => ({
+        index,
+        value,
+      }));
+
       return (
         <div>
           <div className="flex gap-2">
@@ -189,7 +194,7 @@ export const exchangeColumns: ColumnDef<ExchangeItem>[] = [
             <img src={CURRENCY_IMAGES_URLS.DIVINE} className="h-6 w-6 object-contain" />
           </div>
 
-          <MiniChart data={historyNumbers.length ? historyNumbers : [0]} />
+          <ChartGraph data={chartData} className="w-32 h-16" showTooltip />
         </div>
       );
     },

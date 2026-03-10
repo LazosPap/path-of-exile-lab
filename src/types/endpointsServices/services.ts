@@ -9,9 +9,15 @@ export type LeaguesParams = {
 export type CategoriesParams = {
   endpoint: string;
 };
+
 export type SearchParams = {
   endpoint: string;
   queryParams: GetSearchParams;
+};
+
+export type ItemDetailsParams = {
+  endpoint: string;
+  queryParams: GetItemDetailsParams;
 };
 
 export type ItemsParams = {
@@ -59,6 +65,12 @@ export interface SearchItems {
   mapTier: number;
 }
 
+export interface ItemHistory {
+  mean: number;
+  date: string | Date;
+  id: number;
+}
+
 /** Type for the const sidebar. */
 export type SidebarSection = {
   name: string;
@@ -95,6 +107,11 @@ export interface GetItemsParams {
 export interface GetSearchParams {
   league: string | undefined;
   q: string; // It's the item name
+}
+
+export interface GetItemDetailsParams {
+  league: string | undefined;
+  id: number;
 }
 
 export interface GetExchangeRatiosParams {
