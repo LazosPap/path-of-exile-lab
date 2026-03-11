@@ -40,10 +40,15 @@ export function getSearchQueryOptions({
   });
 }
 
-export function getItemDetailsOptions({ endpoint, queryParams }: ItemDetailsOptionsParams) {
+export function getItemDetailsOptions({
+  endpoint,
+  queryParams,
+  enabled,
+}: ItemDetailsOptionsParams) {
   return queryOptions<ItemHistory[]>({
     queryKey: searchKeys.item(endpoint, queryParams),
     queryFn: () => getItemDetails<ItemHistory[]>({ endpoint, queryParams }),
     placeholderData: (prev) => prev,
+    enabled,
   });
 }
