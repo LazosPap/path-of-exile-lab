@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { ChartGraph } from "@/components/charts";
 import { AnimatedDiv, SplitTextAnimation } from "@/components/motion";
 import { CursorAnimation } from "@/components/motion/CursorAnimation";
+import { Easings } from "@/components/motion/Easings";
 import GridMotion from "@/components/motion/GridMotion";
 import { Card, CardContent, CardHeader } from "@/components/shadcn/card";
 import { HISTORY_ENDPOINTS } from "@/constants/endpoints";
@@ -54,7 +55,6 @@ function Index() {
       <AnimatedDiv>
         <ContainerScrollAnimation />
       </AnimatedDiv>
-
       <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
         <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
           <SplitTextAnimation>
@@ -66,22 +66,23 @@ function Index() {
         You can check price history of each item from the start of the league
       </p>
 
-      <Card className="bg-background">
-        <CardHeader>
-          <div className=" flex text-center gap-4 items-center">
-            <img src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7111e35254/CurrencyDuplicate.png" className="w-20 h-20" />
-            <h1 className="text-4xl font-semibold dark:text-white text-black">
-              Mirror of Kalandra
-            </h1>
-          </div>
-        </CardHeader>
-        <CardContent className="w-full lg:h-[calc(100vh-9rem)] h-72 relative">
-          <CursorAnimation images={images}>
-            <ChartGraph data={chartData} xAxis yAxis showTooltip className="h-0" />
-          </CursorAnimation>
-        </CardContent>
-      </Card>
-
+      <Easings>
+        <Card className="bg-background">
+          <CardHeader>
+            <div className=" flex text-center gap-4 items-center">
+              <img src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7111e35254/CurrencyDuplicate.png" className="w-20 h-20" />
+              <h1 className="text-4xl font-semibold dark:text-white text-black">
+                Mirror of Kalandra
+              </h1>
+            </div>
+          </CardHeader>
+          <CardContent className="w-full lg:h-[calc(100vh-9rem)] h-72 relative">
+            <CursorAnimation images={images}>
+              <ChartGraph data={chartData} xAxis yAxis showTooltip className="h-0" />
+            </CursorAnimation>
+          </CardContent>
+        </Card>
+      </Easings>
 
       <AnimatedDiv>
         <div className="py-10">
@@ -92,13 +93,17 @@ function Index() {
               </SplitTextAnimation>
             </span>
           </h1>
-          <GridMotion items={imageItems} gradientColor="black" />
+          <Easings>
+            <GridMotion items={imageItems} gradientColor="black" />
+          </Easings>
         </div>
       </AnimatedDiv>
 
       <AnimatedDiv>
         <div className="overflow-hidden">
-          <CardSwapAnimated />
+          <Easings>
+            <CardSwapAnimated />
+          </Easings>
         </div>
       </AnimatedDiv>
     </HomeLayout>
