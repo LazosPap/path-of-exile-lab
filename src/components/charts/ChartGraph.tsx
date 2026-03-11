@@ -43,6 +43,7 @@ export function ChartGraph<T>({
               axisLine={false}
               tickMargin={8}
               fontWeight={"bold"}
+              interval="preserveStartEnd"
             />
             }
             {yAxis && <YAxis
@@ -51,6 +52,7 @@ export function ChartGraph<T>({
               tickMargin={8}
               tickCount={10}
               fontWeight={"bold"}
+              allowDecimals={false}
             />}
 
             {showTooltip && (

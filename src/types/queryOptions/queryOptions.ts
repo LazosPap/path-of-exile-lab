@@ -20,6 +20,7 @@ export type SearchQueryOptionsParams = {
 export type ItemDetailsOptionsParams = {
   endpoint: string;
   queryParams: GetItemDetailsParams;
+  enabled?: boolean;
 };
 
 export type CategoriesQueryOptionsParams = {
