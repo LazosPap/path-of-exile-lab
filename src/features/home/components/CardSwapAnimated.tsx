@@ -5,13 +5,16 @@ import {
   ScarabsOverview,
 } from "@/assets/images";
 import CardSwap, { Card } from "@/components/motion/CardSwap";
+import { SplitTextAnimation } from "@/components/motion/SplitTextAnimation";
 
 export function CardSwapAnimated() {
   return (
     <div className="mb-32" style={{ height: "500px", position: "relative" }}>
       <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
         <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
-          Application Overview
+          <SplitTextAnimation>
+            Application Overview
+          </SplitTextAnimation>
         </span>
       </h1>
       <CardSwap

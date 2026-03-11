@@ -6,6 +6,7 @@ import { ChartGraph } from "@/components/charts";
 import { AnimatedDiv } from "@/components/motion";
 import { CursorAnimation } from "@/components/motion/CursorAnimation";
 import GridMotion from "@/components/motion/GridMotion";
+import { SplitTextAnimation } from "@/components/motion/SplitTextAnimation";
 import { Card, CardContent, CardHeader } from "@/components/shadcn/card";
 import { HISTORY_ENDPOINTS } from "@/constants/endpoints";
 import { CURRENCY_IMAGES_URLS, IMAGES_URLS } from "@/constants/imagesUrls";
@@ -57,7 +58,9 @@ function Index() {
 
       <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
         <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
-          Follow the currency flow
+          <SplitTextAnimation>
+            Follow the currency flow
+          </SplitTextAnimation>
         </span>
       </h1>
       <p className="text-xl ">
@@ -85,7 +88,9 @@ function Index() {
         <div className="py-10">
           <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
             <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
-              Check all the items price
+              <SplitTextAnimation>
+                Check all the items price
+              </SplitTextAnimation>
             </span>
           </h1>
           <GridMotion items={imageItems} gradientColor="black" />
