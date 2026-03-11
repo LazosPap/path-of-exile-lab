@@ -1,4 +1,5 @@
 import { CurrencyOverview } from "@/assets/images";
+import { SplitTextAnimation } from "@/components/motion";
 import { ContainerScroll } from "@/components/shadcn/container-scroll-animation";
 
 export function ContainerScrollAnimation() {
@@ -8,9 +9,14 @@ export function ContainerScrollAnimation() {
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-black dark:text-white">
-              Welcome to POE Lab <br />
+              <SplitTextAnimation>
+                Welcome to POE Lab <br />
+              </SplitTextAnimation>
+
               <span className="mt-1 text-4xl leading-none font-bold md:text-[6rem]">
-                Live item prices
+                <SplitTextAnimation>
+                  Live item prices
+                </SplitTextAnimation>
               </span>
             </h1>
           </>
@@ -25,6 +31,6 @@ export function ContainerScrollAnimation() {
           draggable={false}
         />
       </ContainerScroll>
-    </div>
+    </div >
   );
 }
