@@ -4,8 +4,8 @@ import {
   AccessoriesOverview,
   ScarabsOverview,
 } from "@/assets/images";
+import { SplitTextAnimation } from "@/components/motion";
 import CardSwap, { Card } from "@/components/motion/CardSwap";
-import { SplitTextAnimation } from "@/components/motion/SplitTextAnimation";
 
 export function CardSwapAnimated() {
   return (

@@ -1,5 +1,5 @@
 import { CurrencyOverview } from "@/assets/images";
-import { SplitTextAnimation } from "@/components/motion/SplitTextAnimation";
+import { SplitTextAnimation } from "@/components/motion";
 import { ContainerScroll } from "@/components/shadcn/container-scroll-animation";
 
 export function ContainerScrollAnimation() {

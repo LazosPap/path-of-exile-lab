@@ -3,10 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { format } from "date-fns";
 
 import { ChartGraph } from "@/components/charts";
-import { AnimatedDiv } from "@/components/motion";
+import { AnimatedDiv, SplitTextAnimation } from "@/components/motion";
 import { CursorAnimation } from "@/components/motion/CursorAnimation";
 import GridMotion from "@/components/motion/GridMotion";
-import { SplitTextAnimation } from "@/components/motion/SplitTextAnimation";
 import { Card, CardContent, CardHeader } from "@/components/shadcn/card";
 import { HISTORY_ENDPOINTS } from "@/constants/endpoints";
 import { CURRENCY_IMAGES_URLS, IMAGES_URLS } from "@/constants/imagesUrls";
