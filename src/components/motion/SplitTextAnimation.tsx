@@ -1,12 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
-import _ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import { useRef } from "react";
 
 import type { SplitTextAnimationProps } from "@/types/motion";
 
-gsap.registerPlugin(useGSAP, SplitText, _ScrollTrigger);
+gsap.registerPlugin(useGSAP, SplitText, ScrollTrigger);
 
 export function SplitTextAnimation({ children }: SplitTextAnimationProps) {
     const container = useRef(null);

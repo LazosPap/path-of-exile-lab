@@ -1,5 +1,6 @@
 import { CurrencyOverview } from "@/assets/images";
 import { SplitTextAnimation } from "@/components/motion";
+import { Easings } from "@/components/motion/Easings";
 import { ContainerScroll } from "@/components/shadcn/container-scroll-animation";
 
 export function ContainerScrollAnimation() {
@@ -22,14 +23,16 @@ export function ContainerScrollAnimation() {
           </>
         }
       >
-        <img
-          src={CurrencyOverview}
-          alt="hero"
-          height={720}
-          width={1400}
-          className="mx-auto h-full rounded-2xl object-cover object-top-left"
-          draggable={false}
-        />
+        <Easings>
+          <img
+            src={CurrencyOverview}
+            alt="hero"
+            height={720}
+            width={1400}
+            className="mx-auto h-full rounded-2xl object-cover object-top-left"
+            draggable={false}
+          />
+        </Easings>
       </ContainerScroll>
     </div >
   );
