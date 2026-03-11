@@ -6,7 +6,6 @@ import {
 } from "@/assets/images";
 import { SplitTextAnimation } from "@/components/motion";
 import CardSwap, { Card } from "@/components/motion/CardSwap";
-import { Easings } from "@/components/motion/Easings";
 
 export function CardSwapAnimated() {
   return (
@@ -18,48 +17,47 @@ export function CardSwapAnimated() {
           </SplitTextAnimation>
         </span>
       </h1>
-      <Easings>
-        <CardSwap
-          width={800}
-          cardDistance={60}
-          verticalDistance={70}
-          delay={5000}
-          pauseOnHover={false}
-        >
-          <Card className="flex items-center justify-center overflow-hidden shadow-md">
-            <img
-              height={720}
-              width={1400}
-              src={CurrencyOverview}
-              className="mx-auto h-full object-cover object-top-left"
-            />
-          </Card>
-          <Card className="flex items-center justify-center overflow-hidden shadow-md">
-            <img
-              height={720}
-              width={1400}
-              src={AccessoriesOverview}
-              className="mx-auto h-full object-cover object-top-left"
-            />
-          </Card>
-          <Card className="flex items-center justify-center overflow-hidden shadow-md">
-            <img
-              height={720}
-              width={1400}
-              src={ScarabsOverview}
-              className="mx-auto h-full object-cover object-top-left"
-            />
-          </Card>
-          <Card className="flex items-center justify-center overflow-hidden shadow-md">
-            <img
-              height={720}
-              width={1400}
-              src={LeaguesOverview}
-              className="mx-auto h-full object-cover object-top-left"
-            />
-          </Card>
-        </CardSwap>
-      </Easings>
-    </div>
+      <CardSwap
+        width={800}
+        cardDistance={60}
+        verticalDistance={70}
+        delay={5000}
+        pauseOnHover={false}
+      >
+        <Card className="flex items-center justify-center overflow-hidden shadow-md">
+          <img
+            height={720}
+            width={1400}
+            src={CurrencyOverview}
+            className="mx-auto h-full object-cover object-top-left"
+          />
+
+        </Card>
+        <Card className="flex items-center justify-center overflow-hidden shadow-md">
+          <img
+            height={720}
+            width={1400}
+            src={AccessoriesOverview}
+            className="mx-auto h-full object-cover object-top-left"
+          />
+        </Card>
+        <Card className="flex items-center justify-center overflow-hidden shadow-md">
+          <img
+            height={720}
+            width={1400}
+            src={ScarabsOverview}
+            className="mx-auto h-full object-cover object-top-left"
+          />
+        </Card>
+        <Card className="flex items-center justify-center overflow-hidden shadow-md">
+          <img
+            height={720}
+            width={1400}
+            src={LeaguesOverview}
+            className="mx-auto h-full object-cover object-top-left"
+          />
+        </Card>
+      </CardSwap>
+    </div >
   );
 }
