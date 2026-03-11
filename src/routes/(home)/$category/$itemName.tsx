@@ -50,7 +50,7 @@ export function ItemPage() {
       endpoint: HISTORY_ENDPOINTS.HISTORY,
       queryParams: {
         league: selectedLeague?.name,
-        id: item?.id,
+        id: item?.id as number,
       },
       enabled: !!item?.id && !!selectedLeague?.name
     }),
