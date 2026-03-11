@@ -45,8 +45,8 @@ function Index() {
   })
 
   const chartData = lastMonthData?.map((item) => ({
-    index: format(new Date(item.date), "MMM d"), // x is formatted date
-    value: item.mean ?? 0,                       // y is the value to chart
+    index: format(new Date(item.date), "MMM d"),
+    value: item.mean ?? 0,
   }));
 
   return (
