@@ -8,7 +8,6 @@ import svgr from "vite-plugin-svgr";
 
 // https://vite.dev/config/
 export default defineConfig({
-  assetsInclude: ["**/*.html"],
   server: {
     proxy: {
       "/api": "http://localhost:3000",
