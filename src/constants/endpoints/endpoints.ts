@@ -1,5 +1,6 @@
 /** The base URL for our endpoints. */
 export const BASE_URL_POE = "https://api.poe.watch";
+export const BASE_URL_POE2 = "/api";
 
 export const LEAGUES_ENDPOINTS = {
   LEAGUES: "/leagues",
