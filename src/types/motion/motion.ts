@@ -7,4 +7,15 @@ export type AnimateDivProps = {
 
 export interface SplitTextAnimationProps {
   children: ReactNode;
+  duration?: number;
+  stagger?: number;
+}
+
+export interface ImageAnimationProps {
+  images: string[];
+}
+
+export interface CursorAnimationProps {
+  children: ReactNode;
+  images: string[];
 }

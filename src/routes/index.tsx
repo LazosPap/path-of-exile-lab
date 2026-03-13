@@ -14,7 +14,6 @@ import { CardSwapAnimated, ContainerScrollAnimation } from "@/features/home/comp
 import { getItemDetailsOptions } from "@/queries/search";
 import { HomeLayout } from "@/routes/(home)/layout";
 
-
 export const Route = createFileRoute("/")({
   component: Index,
 });
@@ -37,13 +36,13 @@ function Index() {
   );
 
   const lastMonthData = data?.filter((item) => {
-    const itemDate = new Date(item.date)
+    const itemDate = new Date(item.date);
 
-    const oneMonthAgo = new Date()
-    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1)
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
 
-    return itemDate >= oneMonthAgo
-  })
+    return itemDate >= oneMonthAgo;
+  });
 
   const chartData = lastMonthData?.map((item) => ({
     index: format(new Date(item.date), "MMM d"),
@@ -57,26 +56,29 @@ function Index() {
       </AnimatedDiv>
       <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
         <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
-          <SplitTextAnimation>
-            Follow the currency flow
-          </SplitTextAnimation>
+          <SplitTextAnimation>Follow the currency flow</SplitTextAnimation>
         </span>
       </h1>
-      <p className="text-xl ">
-        You can check price history of each item from the start of the league
-      </p>
+      <SplitTextAnimation stagger={0.05}>
+        <p className="mb-5 text-xl">
+          You can check price history of each item from the start of the league
+        </p>
+      </SplitTextAnimation>
 
       <Easings>
         <Card className="bg-background">
           <CardHeader>
-            <div className=" flex text-center gap-4 items-center">
-              <img src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7111e35254/CurrencyDuplicate.png" className="w-20 h-20" />
-              <h1 className="text-4xl font-semibold dark:text-white text-black">
+            <div className="flex items-center gap-4 text-center">
+              <img
+                src="https://web.poecdn.com/gen/image/WzI1LDE0LHsiZiI6IjJESXRlbXMvQ3VycmVuY3kvQ3VycmVuY3lEdXBsaWNhdGUiLCJ3IjoxLCJoIjoxLCJzY2FsZSI6MX1d/7111e35254/CurrencyDuplicate.png"
+                className="h-20 w-20"
+              />
+              <h1 className="text-4xl font-semibold text-black dark:text-white">
                 Mirror of Kalandra
               </h1>
             </div>
           </CardHeader>
-          <CardContent className="w-full lg:h-[calc(100vh-9rem)] h-72 relative">
+          <CardContent className="relative h-72 w-full lg:h-[calc(100vh-9rem)]">
             <CursorAnimation images={images}>
               <ChartGraph data={chartData} xAxis yAxis showTooltip className="h-0" />
             </CursorAnimation>
@@ -88,9 +90,7 @@ function Index() {
         <div className="py-10">
           <h1 className="py-4 text-4xl font-semibold text-black dark:text-white">
             <span className="mt-1 text-4xl leading-none font-bold md:text-[4rem]">
-              <SplitTextAnimation>
-                Check all the items price
-              </SplitTextAnimation>
+              <SplitTextAnimation>Check all the items price</SplitTextAnimation>
             </span>
           </h1>
           <Easings>
