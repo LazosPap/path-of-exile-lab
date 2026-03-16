@@ -72,14 +72,14 @@ export function ImageAnimation({ images }: ImageAnimationProps) {
 
   return (
     <section ref={containerRef} className="absolute inset-0 z-20 overflow-hidden">
-      <div className="relative mx-auto w-full">
+      <div className="relative mx-auto w-full max-w-[1400px] h-full">
         {images.map((img, index) => (
           <div
             ref={(slide) => {
               imagesRef.current[index] = slide;
             }}
             key={index}
-            className="absolute w-full max-w-[1400px]"
+            className="absolute inset-0"
           >
             <img src={img} alt={`image-${index + 1}`} className="h-full w-full object-cover" />
           </div>
